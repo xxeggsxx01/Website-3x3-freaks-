@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FREAKS 3x3 — Born in Italy. Built in Nijmegen.</title>
-<meta name="description" content="Freaks 3x3 is a 3x3 basketball community born in Italy, growing in Nijmegen. Become a founding partner: one investment, two countries.">
+<title>Freaks 3x3 — Born in Italy. Building Worldwide.</title>
+<meta name="description" content="Freaks 3x3 is a 3x3 basketball community founded in Italy and growing in Nijmegen. Nijmegen champions, qualified for the Amsterdam Finals. Become a founding partner.">
 <meta name="theme-color" content="#050b1c">
-<meta property="og:title" content="FREAKS 3x3 — Born in Italy. Built in Nijmegen.">
-<meta property="og:description" content="3x3 basketball community in Nijmegen with Italian roots. Founding sponsorship spots open for 2026.">
+<meta property="og:title" content="Freaks 3x3 — Born in Italy. Building Worldwide.">
+<meta property="og:description" content="Cross-border 3x3 basketball in Nijmegen and Italy. Your brand on both.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050b1c'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%23f5c542' stroke-width='4'/%3E%3Cpath d='M12 32h40M32 12v40M18 18q14 14 0 28M46 18q-14 14 0 28' fill='none' stroke='%23f5c542' stroke-width='3'/%3E%3C/svg%3E">
+<meta property="og:image" content="assets/og.jpg">
+<link rel="icon" type="image/png" href="assets/icon-64.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -24,6 +26,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{background:var(--navy-900);color:var(--ink);font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55;overflow-x:hidden}
+img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.015em;line-height:1.02;text-transform:uppercase}
 .gold{background:linear-gradient(120deg,var(--gold-3),var(--gold),var(--gold-2),var(--gold));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s ease-in-out infinite}
@@ -31,54 +34,72 @@ h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.015em;line-h
 .wrap{width:min(1120px,100% - 32px);margin-inline:auto}
 section{padding:96px 0;position:relative}
 .eyebrow{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:800}
+.nw{white-space:nowrap}
 h2{font-size:clamp(2.2rem,5.4vw,4rem);margin-bottom:18px}
-.lead{color:var(--muted);max-width:60ch;font-size:1.08rem}
+.lead{color:var(--muted);max-width:62ch;font-size:1.08rem}
+.lead strong{color:var(--ink);font-weight:600}
 
-/* cursor glow */
 #glow{position:fixed;inset:0;pointer-events:none;z-index:1;
   background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(245,197,66,.09),transparent 60%)}
 
-/* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s;padding:14px 0}
-nav.solid{background:rgba(5,11,28,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s;padding:12px 0}
+nav.solid{background:rgba(5,11,28,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.5rem;letter-spacing:.05em}
 .logo b{color:var(--gold);font-weight:400}
-.logo svg{width:30px;height:30px;transition:transform .6s}
-.logo:hover svg{transform:rotate(360deg)}
+.logo img{height:38px;width:auto;transition:transform .5s}
+.logo:hover img{transform:rotate(-8deg) scale(1.08)}
 nav ul{display:flex;gap:24px;list-style:none;font-size:.9rem;color:var(--muted)}
 nav ul a{position:relative;padding:4px 0}
 nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s}
 nav ul a:hover,nav ul a.act{color:var(--gold)}
 nav ul a.act::after{transform:scaleX(1)}
+nav ul .m-only{display:none}
 .right{display:flex;align-items:center;gap:12px}
 .lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:rgba(8,18,43,.7)}
-.lang button{border:0;background:none;color:var(--muted);font:800 .72rem/1 inherit;font-family:inherit;padding:7px 9px;border-radius:999px;cursor:pointer;letter-spacing:.06em}
+.lang button{border:0;background:none;color:var(--muted);font-family:inherit;font-weight:800;font-size:.72rem;padding:7px 9px;border-radius:999px;cursor:pointer;letter-spacing:.06em}
 .lang button.on{background:var(--gold);color:#1a1200}
-.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:42px;height:38px;cursor:pointer;color:var(--ink);font-size:1.2rem}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font-weight:800;font-size:.92rem;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s,color .2s;font-family:inherit}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:12px;width:44px;height:44px;cursor:pointer;color:var(--ink);font-size:1.2rem}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;min-height:44px;border-radius:999px;font-weight:800;font-size:.92rem;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s,color .2s;font-family:inherit}
 .btn.primary{background:linear-gradient(120deg,var(--gold-3),var(--gold),var(--gold-2));color:#1a1200;box-shadow:0 8px 30px rgba(245,197,66,.25)}
 .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(245,197,66,.45)}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
 @media(max-width:900px){
-  nav ul{position:fixed;top:66px;left:16px;right:16px;flex-direction:column;gap:0;background:rgba(8,18,43,.97);border:1px solid var(--line);border-radius:16px;padding:8px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:.25s}
+  nav ul{position:fixed;top:70px;left:16px;right:16px;flex-direction:column;gap:0;background:rgba(8,18,43,.97);border:1px solid var(--line);border-radius:16px;padding:8px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:.25s}
   nav ul.open{transform:none;opacity:1;pointer-events:auto}
   nav ul a{display:block;padding:14px 12px;font-size:1rem}
   nav ul a::after{display:none}
+  nav ul .m-only{display:block}
   .burger{display:block}
   .right .btn{display:none}
+  .lang button{min-width:40px;min-height:40px}
+  .logo span{display:none}
 }
 
-/* hero */
-#hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;
+/* sticky mobile CTA */
+#mcta{display:none}
+@media(max-width:900px){
+  #mcta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;justify-content:center;transform:translateY(140%);transition:transform .35s}
+  #mcta.show{transform:none}
+  footer{padding-bottom:96px!important}
+}
+
+/* ---------- hero ---------- */
+#hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;overflow:hidden;
   background:radial-gradient(1000px 600px at 75% 30%,var(--navy-600),transparent 70%),linear-gradient(180deg,var(--navy-800),var(--navy-900))}
 #court{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.mark{position:absolute;z-index:0;left:-6%;top:50%;width:min(620px,70vw);transform:translateY(-50%) rotate(-8deg);opacity:.05;pointer-events:none}
 #hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
-#hero h1{font-size:clamp(3rem,7.4vw,6.2rem);margin-bottom:22px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(245,197,66,.08);color:var(--gold-2);font-size:.82rem;font-weight:700;margin-bottom:18px;transition:.25s}
+.pill:hover{border-color:var(--gold);background:rgba(245,197,66,.14)}
+#hero h1{font-size:clamp(2.8rem,6vw,5rem);margin-bottom:20px}
 #hero h1 .ln{display:block;overflow:hidden}
 #hero h1 .ln>span{display:inline-block;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
 #hero h1 .ln:nth-child(2)>span{animation-delay:.12s}
+#hero h1 .ln:nth-child(3)>span{animation-delay:.24s}
+#hero h1 .tag{font-size:.5em;letter-spacing:.04em;margin-top:.25em}
 @keyframes rise{from{transform:translateY(105%)}}
 #hero p.sub{color:var(--muted);font-size:1.15rem;max-width:46ch;margin-bottom:30px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
@@ -87,7 +108,7 @@ nav ul a.act::after{transform:scaleX(1)}
 @keyframes pulse{50%{transform:scale(1.8);opacity:.3}}
 
 /* game */
-.game{position:relative;height:470px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(180deg,rgba(20,41,94,.55),rgba(8,18,43,.75));backdrop-filter:blur(4px);overflow:hidden;touch-action:none;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.game{position:relative;height:470px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(180deg,rgba(20,41,94,.55),rgba(8,18,43,.75));backdrop-filter:blur(4px);overflow:hidden;touch-action:pan-y;box-shadow:0 30px 80px rgba(0,0,0,.45)}
 .game canvas{width:100%;height:100%;display:block;cursor:grab}
 .game canvas:active{cursor:grabbing}
 .hud{position:absolute;top:12px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;pointer-events:none}
@@ -95,7 +116,7 @@ nav ul a.act::after{transform:scaleX(1)}
 .score b{color:var(--gold);font-size:1.5rem;font-weight:400;margin-right:6px}
 .clock{font-family:var(--display);font-size:1.6rem;color:#ff5a3c;background:#000;border:2px solid #222;border-radius:8px;padding:2px 10px;min-width:62px;text-align:center;letter-spacing:.06em;display:none;text-shadow:0 0 12px rgba(255,90,60,.7)}
 .clock.on{display:block}
-.chall{position:absolute;bottom:14px;right:14px;pointer-events:auto;font-size:.78rem;padding:10px 16px}
+.chall{position:absolute;bottom:14px;right:14px;font-size:.78rem;padding:10px 16px}
 .toast{position:absolute;left:50%;top:60px;transform:translateX(-50%);color:var(--gold);font-family:var(--display);font-size:1.6rem;letter-spacing:.06em;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap;text-shadow:0 0 20px rgba(245,197,66,.6)}
 .toast.show{opacity:1;top:72px}
 @media(max-width:900px){#hero .wrap{grid-template-columns:1fr}.game{height:400px}}
@@ -106,50 +127,89 @@ nav ul a.act::after{transform:scaleX(1)}
 .marquee span{margin:0 26px;color:var(--muted);font-size:.8rem;vertical-align:middle}
 @keyframes slide{to{transform:translateX(-50%)}}
 
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
-.stat{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800))}
-.stat b{display:block;font-family:var(--display);font-weight:400;font-size:3rem;color:var(--gold);line-height:1.1}
-.stat small{color:var(--muted)}
-@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}}
-
 /* reveal */
 .rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s}
 .rv.in{opacity:1;transform:none}
 
-/* lists */
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+/* photos */
+.photo{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--navy-700)}
+.photo img{width:100%;height:115%;object-fit:cover;will-change:transform}
+.photo figcaption{position:absolute;left:14px;bottom:14px;z-index:1;font-size:.8rem;font-weight:700;color:var(--ink);background:rgba(5,11,28,.72);backdrop-filter:blur(6px);border:1px solid var(--line);padding:8px 12px;border-radius:10px;max-width:calc(100% - 28px)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,11,28,.55));pointer-events:none}
+
+/* about / proof */
+.proof{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px;align-items:stretch}
+.proof .photo{aspect-ratio:4/5}
+.proof h3{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-bottom:14px}
+.proof p{color:var(--muted);margin-bottom:24px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800))}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:2.8rem;color:var(--gold);line-height:1.1}
+.stat small{color:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:56px}
 .cols h3{font-size:1.9rem;margin-bottom:18px}
 .list{list-style:none;display:grid;gap:12px}
-.list li{padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:var(--navy-800);transition:.25s;display:flex;gap:12px}
-.list li:hover{transform:translateX(6px);border-color:var(--gold)}
+.list li{padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:var(--navy-800);transition:border-color .25s;display:flex;gap:12px}
+.list li:hover{border-color:rgba(245,197,66,.45)}
 .list li::before{content:"●";color:var(--gold);font-size:.7rem;margin-top:6px}
-@media(max-width:800px){.cols{grid-template-columns:1fr}}
+@media(max-width:860px){.proof,.cols{grid-template-columns:1fr}.proof .photo{aspect-ratio:4/4.4}}
 
-/* route */
+/* italy */
 #italy{background:linear-gradient(180deg,var(--navy-900),var(--navy-800))}
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+.split .photo{aspect-ratio:4/4.6}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
 .route{margin-top:40px;border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:radial-gradient(600px 200px at 50% 50%,rgba(20,41,94,.6),transparent),var(--navy-900)}
 .route svg{width:100%;height:auto;display:block}
 .route .arc{stroke:var(--gold);stroke-width:2.5;fill:none;stroke-dasharray:6 8;animation:dash 1.4s linear infinite}
 @keyframes dash{to{stroke-dashoffset:-28}}
 .route text{font-family:var(--display)}
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
-.card{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800));transition:transform .3s,border-color .3s,box-shadow .3s}
-.card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 18px 50px rgba(0,0,0,.4)}
+.card{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800));transition:border-color .3s}
+.card:hover{border-color:rgba(245,197,66,.45)}
 .card h3{font-size:1.45rem;margin-bottom:10px;color:var(--gold)}
 .card p{color:var(--muted);font-size:.96rem}
 @media(max-width:800px){.cards3{grid-template-columns:1fr}}
 
+/* kit */
+#kit{background:var(--navy-800);overflow:hidden}
+.kitgrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:860px){.kitgrid{grid-template-columns:1fr}}
+.stage{position:relative;background:#fff;border-radius:24px;padding:22px;box-shadow:0 30px 90px rgba(0,0,0,.5),0 0 0 1px var(--line);perspective:1400px;cursor:pointer;justify-self:center;width:min(420px,100%)}
+.flip{position:relative;width:100%;aspect-ratio:517/833;transition:transform .8s cubic-bezier(.3,.7,.2,1);transform-style:preserve-3d}
+.flip.b{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face img{width:100%;height:100%;object-fit:contain}
+.face.back{transform:rotateY(180deg)}
+.hs{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;border:0;background:none;cursor:pointer;z-index:2}
+.hs::before{content:"";position:absolute;inset:8px;border-radius:50%;border:3px solid var(--gold);background:rgba(245,197,66,.25);animation:ping 1.8s infinite}
+.hs span{position:absolute;left:calc(100% + 6px);top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--navy-900);color:var(--gold-2);font-size:.75rem;font-weight:800;padding:6px 10px;border-radius:8px;border:1px solid var(--gold);pointer-events:none}
+@keyframes ping{50%{transform:scale(1.25);box-shadow:0 0 0 8px rgba(245,197,66,.15)}}
+.kitctl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:26px 0 18px}
+.sw{width:44px;height:44px;border-radius:50%;border:3px solid transparent;cursor:pointer;box-shadow:0 0 0 1px var(--line);transition:.2s}
+.sw.on{border-color:var(--gold);transform:scale(1.1)}
+.sw[data-c=white]{background:#f3f3f3}.sw[data-c=orange]{background:#f6a326}.sw[data-c=red]{background:#e4201c}
+.kitnote{color:var(--muted);font-size:.88rem;max-width:52ch}
+.buy{margin-top:24px;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--navy-900);max-width:440px}
+.buy .row{display:flex;justify-content:space-between;padding:6px 0;color:var(--muted);font-size:.95rem}
+.buy .row.set{color:var(--ink);font-weight:800;border-top:1px solid var(--line);margin-top:6px;padding-top:12px}
+.buy .row.set b{color:var(--gold)}
+.buy .btn{width:100%;justify-content:center;margin-top:14px}
+.buy small{display:block;margin-top:10px;color:var(--muted);font-size:.78rem;text-align:center}
+
 /* tiers */
-.toggle{display:inline-flex;margin:26px 0 34px;border:1px solid var(--line);border-radius:999px;padding:5px;background:var(--navy-800)}
-.toggle button{border:0;background:none;color:var(--muted);padding:10px 22px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit;font-size:.9rem;transition:.25s}
+.toggle{display:inline-flex;margin:26px 0 12px;border:1px solid var(--line);border-radius:999px;padding:4px;background:var(--navy-800)}
+.toggle button{border:0;background:none;color:var(--muted);padding:10px 22px;min-height:44px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit;font-size:.9rem;transition:.25s}
 .toggle button.on{background:linear-gradient(120deg,var(--gold-3),var(--gold));color:#1a1200}
+.vat{color:var(--muted);font-size:.82rem;margin-bottom:34px}
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;perspective:1200px}
-.tier{position:relative;padding:32px 26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800));display:flex;flex-direction:column;transition:transform .25s ease-out,opacity .8s;transform-style:preserve-3d}
+.tier{position:relative;padding:32px 26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800));display:flex;flex-direction:column;transition:transform .25s ease-out,opacity .8s,box-shadow .4s;transform-style:preserve-3d}
 .tier.main{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 20px 70px rgba(245,197,66,.18)}
+.tier.flash{animation:flash 1.6s ease-out}
+@keyframes flash{0%,40%{box-shadow:0 0 0 3px var(--gold),0 0 80px rgba(245,197,66,.6)}}
 .tier .shine{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(300px circle at var(--sx,50%) var(--sy,0%),rgba(245,197,66,.13),transparent 60%);opacity:0;transition:opacity .3s}
 .tier:hover .shine{opacity:1}
-.badge{position:absolute;top:-13px;left:26px;background:var(--gold);color:#1a1200;font-size:.7rem;font-weight:900;letter-spacing:.14em;padding:5px 12px;border-radius:999px}
+.badge{position:absolute;top:-13px;left:26px;background:var(--gold);color:#1a1200;font-size:.7rem;font-weight:900;letter-spacing:.12em;padding:5px 12px;border-radius:999px}
 .tier h3{font-size:1.6rem;margin-bottom:6px}
 .price{font-family:var(--display);font-size:3.2rem;color:var(--gold);margin:6px 0 0;line-height:1.1}
 .per{color:var(--muted);font-size:.85rem;min-height:1.4em}
@@ -161,28 +221,28 @@ nav ul a.act::after{transform:scaleX(1)}
 @media(max-width:900px){.tiers{grid-template-columns:1fr}}
 
 /* budget */
+#invest{background:var(--navy-800)}
 .budget{display:grid;gap:12px;margin-top:34px}
 .bar{display:grid;grid-template-columns:250px 1fr 120px;gap:14px;align-items:center;font-size:.92rem}
 .track{height:14px;border-radius:99px;background:var(--navy-700);overflow:hidden}
 .fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold-3),var(--gold-2));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
 .bar>span:last-child{text-align:right;color:var(--muted)}
 .total{margin-top:20px;padding:18px 22px;border:1px solid var(--gold);border-radius:14px;display:flex;justify-content:space-between;gap:12px;font-weight:800;flex-wrap:wrap}
+.whynow{margin-top:24px}
 @media(max-width:700px){.bar{grid-template-columns:1fr 100px}.bar .track{grid-column:1/-1;order:3}}
-
-.why{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
-.why .wide{grid-column:1/-1}
-@media(max-width:800px){.why{grid-template-columns:1fr}}
 
 /* contact */
 #contact{background:radial-gradient(900px 500px at 50% 100%,var(--navy-600),transparent 70%),var(--navy-900);text-align:center}
 #contact h2{font-size:clamp(2.6rem,7vw,5.6rem)}
-form{max-width:560px;margin:34px auto 0;display:grid;gap:12px;text-align:left}
-input,select,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--navy-800);color:var(--ink);font:inherit}
+form{max-width:560px;margin:34px auto 0;display:grid;gap:14px;text-align:left}
+label{display:grid;gap:6px;font-size:.85rem;font-weight:700;color:var(--ink)}
+input,select,textarea{width:100%;padding:13px 16px;min-height:48px;border-radius:12px;border:1px solid var(--line);background:var(--navy-800);color:var(--ink);font:inherit;font-weight:400}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
 .contacts{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px}
 .contacts a{padding:14px 22px;border:1px solid var(--line);border-radius:999px;color:var(--muted);transition:.25s}
 .contacts a:hover{border-color:var(--gold);color:var(--gold)}
 footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
 #thanks{display:none;color:var(--gold);font-weight:800;text-align:center}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
@@ -194,35 +254,40 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
 <nav id="nav">
   <div class="wrap">
     <a href="#hero" class="logo" aria-label="Freaks 3x3 home">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" fill="none" stroke="#f5c542" stroke-width="4"/><path d="M6 32h52M32 6v52M14 14q18 18 0 36M50 14q-18 18 0 36" fill="none" stroke="#f5c542" stroke-width="3"/></svg>
+      <img src="assets/logo-gold.png" alt="" width="776" height="1014">
       <span>FREAKS <b>3x3</b></span>
     </a>
     <ul id="menu">
       <li><a href="#about" data-i18n="nav.about">Community</a></li>
-      <li><a href="#italy" data-i18n="nav.italy">Italy Connection</a></li>
+      <li><a href="#italy" data-i18n="nav.italy">Italy</a></li>
+      <li><a href="#kit" data-i18n="nav.kit">Kit</a></li>
       <li><a href="#tiers" data-i18n="nav.tiers">Sponsorship</a></li>
-      <li><a href="#nijmegen">Nijmegen</a></li>
+      <li class="m-only"><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
     <div class="right">
       <div class="lang" role="group" aria-label="Language">
         <button data-lang="en" class="on">EN</button><button data-lang="nl">NL</button><button data-lang="it">IT</button>
       </div>
       <a href="#contact" class="btn primary" data-i18n="nav.cta">Become a partner</a>
-      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">☰</button>
     </div>
   </div>
 </nav>
 
+<a href="#contact" id="mcta" class="btn primary" data-i18n="mcta">Become a partner →</a>
+
 <header id="hero">
   <canvas id="court" aria-hidden="true"></canvas>
+  <img class="mark" src="assets/logo-gold.png" alt="" aria-hidden="true">
   <div class="wrap">
     <div>
-      <p class="eyebrow">3x3 Basketball · Nijmegen × Le Marche</p>
-      <h1 data-i18n="hero.h1"><span class="ln"><span>Born in <span class="gold">Italy.</span></span></span><span class="ln"><span>Built in <span class="gold">Nijmegen.</span></span></span></h1>
-      <p class="sub" data-i18n="hero.p">A streetball community with genuine Italian roots, now taking over Dutch courts. One investment. Two countries. One community that is only just getting started.</p>
+      <a href="#about" class="pill" data-i18n="hero.badge">🏆 Nijmegen champions · Qualified for the Amsterdam Finals</a>
+      <p class="eyebrow">3x3 Basketball · Nijmegen × <span class="nw">Le Marche</span></p>
+      <h1 data-i18n="hero.h1"><span class="ln"><span>Born in <span class="gold">Italy.</span></span></span><span class="ln"><span>Building <span class="gold">Worldwide.</span></span></span><span class="ln"><span class="tag">Your brand on both.</span></span></h1>
+      <p class="sub" data-i18n="hero.p">A streetball community with genuine Italian roots, now winning in Nijmegen. One partnership. Two markets. A story that's only just beginning.</p>
       <div class="cta">
         <a href="#tiers" class="btn primary" data-i18n="hero.cta">See sponsorship tiers →</a>
-        <a href="https://instagram.com/freaks3x3" target="_blank" rel="noopener" class="btn ghost">@freaks3x3</a>
+        <a href="#kit" class="btn ghost" data-i18n="hero.kit">See the kit</a>
       </div>
       <div class="hint"><i></i><span data-i18n="hero.hint">Drag the ball back and release to shoot. Try the 12-second shot clock challenge.</span></div>
     </div>
@@ -233,7 +298,7 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
       </div>
       <div class="toast" id="toast"></div>
       <canvas id="gc" aria-label="Basketball shooting mini-game"></canvas>
-      <button class="btn primary chall" id="chall" data-i18n="g.start">⏱ 12s CHALLENGE</button>
+      <button class="btn primary chall" id="chall">⏱ 12s CHALLENGE</button>
     </div>
   </div>
 </header>
@@ -243,19 +308,31 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
 <section id="about">
   <div class="wrap">
     <p class="eyebrow rv" data-i18n="about.eye">Who we are</p>
-    <h2 class="rv" data-i18n="about.h2">The fastest-growing<br>format in <span class="gold">urban basketball</span></h2>
-    <p class="lead rv" data-i18n="about.p">Freaks 3x3 is a 3x3 basketball community born in Italy six months ago, now expanding into the Netherlands. We compete in official tournaments, carry our own brand identity and are actively growing around Nijmegen. We bring the streetball spirit to Dutch courts, with genuine Italian roots behind us.</p>
-    <div class="stats rv">
-      <div class="stat"><b data-n="300" data-suf="+">0</b><small data-i18n="st.1">followers gained in under 3 months</small></div>
-      <div class="stat"><b data-n="6">0</b><small data-i18n="st.2">months since we started in Italy</small></div>
-      <div class="stat"><b data-n="2">0</b><small data-i18n="st.3">countries, one community</small></div>
-      <div class="stat"><b data-n="12" data-suf="s">0</b><small data-i18n="st.4">shot clock. 3x3 is the fastest game on the court</small></div>
+    <h2 class="rv" data-i18n="about.h2">The Olympic format<br>of <span class="gold">streetball</span></h2>
+    <p class="lead rv" data-i18n="about.p">Freaks 3x3 is a basketball community founded in Italy by <strong>Nicola Paradisi</strong> and led in Nijmegen by <strong>Mohamed Carlo Sow</strong>. We play official FIBA 3x3 tournaments in our own kit, run pick-up games in the city and take Dutch players to Italian courts. 3x3 has been an Olympic sport since Tokyo 2020.</p>
+
+    <div class="proof">
+      <figure class="photo rv">
+        <img src="assets/team-win.webp" alt="Six Freaks 3x3 players in white Freaks jerseys celebrating their Nijmegen tournament win on an outdoor court" loading="lazy" width="1050" height="1400">
+        <figcaption data-i18n="pr.cap">🏆 Nijmegen city tournament champions</figcaption>
+      </figure>
+      <div class="rv">
+        <h3 data-i18n="pr.h3">Nijmegen champions.<br>Next stop: <span class="gold">Amsterdam.</span></h3>
+        <p data-i18n="pr.p">We won the Nijmegen city 3x3 tournament in the Freaks 3x3 kit and qualified for the Amsterdam Finals, where we face the champions of other cities.</p>
+        <div class="stats">
+          <div class="stat"><b>1st</b><small data-i18n="st.1">Nijmegen city tournament</small></div>
+          <div class="stat"><b>AMS</b><small data-i18n="st.2">qualified for the Amsterdam Finals</small></div>
+          <div class="stat"><b data-n="600" data-suf="+">600+</b><small data-i18n="st.3">followers in under 3 months</small></div>
+          <div class="stat"><b data-n="2">2</b><small data-i18n="st.4">countries, one community</small></div>
+        </div>
+      </div>
     </div>
-    <div class="cols" style="margin-top:56px">
+
+    <div class="cols">
       <div class="rv">
         <h3 data-i18n="about.h3a">What we do</h3>
         <ul class="list">
-          <li data-i18n="do.1">Official FIBA 3x3 circuit tournaments</li>
+          <li data-i18n="do.1">Official FIBA 3x3 circuit tournaments in Italy and the Netherlands</li>
           <li data-i18n="do.2">Regular pick-up games in Nijmegen</li>
           <li data-i18n="do.3">Cross-border trips: NL players competing in Italian tournaments</li>
           <li data-i18n="do.4">Active social presence in both countries</li>
@@ -263,12 +340,13 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
         </ul>
       </div>
       <div class="rv">
-        <h3 data-i18n="about.h3b">Where we stand</h3>
+        <h3 data-i18n="about.h3b">Why Nijmegen</h3>
         <ul class="list">
-          <li data-i18n="ws.1">Nijmegen is our target city, with a basketball community already forming</li>
-          <li data-i18n="ws.2">Already competed in tournaments in official Freaks 3x3 kit</li>
-          <li data-i18n="ws.3">Actively recruiting local players and expanding the NL roster</li>
-          <li data-i18n="ws.4">Seeking founding partners to grow with from day one</li>
+          <li data-i18n="nj.1">A pick-up basketball culture already exists here</li>
+          <li data-i18n="nj.2">Youth reached through accessible, non-club basketball</li>
+          <li data-i18n="nj.3">Dutch and Italian players side by side</li>
+          <li data-i18n="nj.4">Actively recruiting local players for the NL roster</li>
+          <li data-i18n="nj.5">We're looking for a regular court, local business partners and municipal support</li>
         </ul>
       </div>
     </div>
@@ -277,9 +355,17 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
 
 <section id="italy">
   <div class="wrap">
-    <p class="eyebrow rv" data-i18n="it.eye">The Italy connection</p>
-    <h2 class="rv" data-i18n="it.h2">Your brand <span class="gold">travels</span> with us</h2>
-    <p class="lead rv" data-i18n="it.p">No other Dutch sports community is genuinely Italian. Our community was founded in Italy, our network there is active and our players regularly compete on Italian courts. As a sponsor, your brand goes along.</p>
+    <div class="split">
+      <div>
+        <p class="eyebrow rv" data-i18n="it.eye">The Italy connection</p>
+        <h2 class="rv" data-i18n="it.h2">Your brand <span class="gold">travels</span> with us</h2>
+        <p class="lead rv" data-i18n="it.p">We're not a Dutch club with an Italian name. We were founded in Italy, our network there is active and our players compete on Italian courts. As a sponsor, your brand comes along.</p>
+      </div>
+      <figure class="photo rv">
+        <img src="assets/italy-player.webp" alt="Freaks 3x3 player in a yellow Freaks jersey on court at a 3x3 event in Italy" loading="lazy" width="1100" height="1375">
+        <figcaption data-i18n="it.cap">🇮🇹 On court at a 3x3 event in Italy</figcaption>
+      </figure>
+    </div>
     <div class="route rv">
       <svg viewBox="0 0 800 260" role="img" aria-label="Route from Nijmegen to Le Marche">
         <defs><radialGradient id="g"><stop offset="0" stop-color="#f5c542"/><stop offset="1" stop-color="#f5c542" stop-opacity="0"/></radialGradient></defs>
@@ -288,14 +374,47 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
         <circle cx="630" cy="190" r="26" fill="url(#g)"><animate attributeName="r" values="30;18;30" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="630" cy="190" r="7" fill="#f5c542"/>
         <text x="170" y="118" text-anchor="middle" fill="#eaf0ff" font-size="24" letter-spacing="2">NIJMEGEN 🇳🇱</text>
         <text x="630" y="238" text-anchor="middle" fill="#eaf0ff" font-size="24" letter-spacing="2">LE MARCHE 🇮🇹</text>
-        <text x="400" y="40" text-anchor="middle" fill="#93a3cc" font-size="15" letter-spacing="3" data-i18n="it.svg">YOUR LOGO IN BOTH</text>
+        <text x="400" y="140" text-anchor="middle" fill="#93a3cc" font-size="15" letter-spacing="3" data-i18n="it.svg">YOUR LOGO IN BOTH</text>
         <circle r="9" fill="#ffdf7e"><animateMotion dur="3.4s" repeatCount="indefinite"><mpath href="#rp"/></animateMotion></circle>
       </svg>
     </div>
     <div class="cards3">
-      <div class="card rv"><h3 data-i18n="it.c1h">Your brand on Italian courts</h3><p data-i18n="it.c1p">Our trips include professional 3x3 circuit events with official backdrops, media presence and large audiences.</p></div>
+      <div class="card rv"><h3 data-i18n="it.c1h">Your logo on Italian courts</h3><p data-i18n="it.c1p">We play 3x3 circuit events in Italy. Your logo plays with us: on our kit and in every photo and video we bring home.</p></div>
       <div class="card rv"><h3 data-i18n="it.c2h">Cross-border content</h3><p data-i18n="it.c2p">Every trip produces matches, cities and culture, shared across our channels in both countries. Settings standard advertising cannot buy.</p></div>
-      <div class="card rv"><h3 data-i18n="it.c3h">Client Italy experience</h3><p data-i18n="it.c3p">Main Sponsor exclusive: private accommodation, a rental car and guided visits to the coast, the river and the best local restaurants in Le Marche.</p></div>
+      <div class="card rv"><h3 data-i18n="it.c3h">A homecoming in Le Marche</h3><p data-i18n="it.c3p">Main Sponsor exclusive: stay at a friend's B&amp;B, borrow a car and let us show you the coast, the hills and the local tables we grew up with. Dates agreed together.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="kit">
+  <div class="wrap kitgrid">
+    <div>
+      <p class="eyebrow rv" data-i18n="kit.eye">The summer kit</p>
+      <h2 class="rv" data-i18n="kit.h2">Wear it. <span class="gold">Or put your logo on it.</span></h2>
+      <p class="lead rv" data-i18n="kit.p">Our summer kit in three colourways. Flip it to see where each sponsor tier sits on the back.</p>
+      <div class="kitctl rv">
+        <button class="sw on" data-c="white" aria-label="White" data-i18n-al="kit.white"></button>
+        <button class="sw" data-c="orange" aria-label="Orange" data-i18n-al="kit.orange"></button>
+        <button class="sw" data-c="red" aria-label="Red" data-i18n-al="kit.red"></button>
+        <button class="btn ghost" id="flipBtn">Show back ↻</button>
+      </div>
+      <p class="kitnote rv" data-i18n="kit.note">Example placement on our current kit. Community Partners appear on training and community kit. Tap a gold marker to see that tier.</p>
+      <div class="buy rv">
+        <div class="row"><span data-i18n="kit.jersey">Jersey</span><span id="pJ">€44.50</span></div>
+        <div class="row"><span data-i18n="kit.shorts">Shorts</span><span id="pS">€29.98</span></div>
+        <div class="row set"><span data-i18n="kit.set">Full set</span><b id="pX">€69.99</b></div>
+        <a class="btn primary" id="order" href="https://wa.me/31614395997" target="_blank" rel="noopener" data-i18n="kit.order">Order on WhatsApp →</a>
+        <small data-i18n="kit.sizes">Sizes XS–XXL</small>
+      </div>
+    </div>
+    <div class="stage rv" id="stage" role="button" tabindex="0" aria-label="Flip kit">
+      <div class="flip" id="flip">
+        <div class="face front"><img id="kitF" src="assets/kit-white-front.webp" alt="Freaks 3x3 summer kit, front" width="520" height="837"></div>
+        <div class="face back"><img id="kitB" src="assets/kit-white-back.webp" alt="Freaks 3x3 summer kit, back with sponsor logos" width="517" height="833">
+          <button class="hs" style="left:50%;top:20%" data-go="Main Sponsor"><span data-i18n="kit.hs1">Main Sponsor: primary logo</span></button>
+          <button class="hs" style="left:50%;top:33.5%" data-go="Tournament Sponsor"><span data-i18n="kit.hs2">Tournament Sponsor: match kit</span></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -309,8 +428,9 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
       <button id="t6" class="on" data-i18n="ti.t6">Per 6 months</button>
       <button id="t12" data-i18n="ti.t12">Full year · −20%</button>
     </div>
+    <p class="vat rv" data-i18n="ti.vat">Prices excl. VAT, where applicable.</p>
     <div class="tiers">
-      <article class="tier rv" data-a="600" data-b="960"><div class="shine"></div>
+      <article class="tier rv" data-name="Community Partner" data-a="600" data-b="960"><div class="shine"></div>
         <h3>Community Partner</h3>
         <div class="price" data-role="p">€600</div><div class="per" data-role="per">per 6 months</div><div class="save" data-role="s"></div>
         <ul>
@@ -321,22 +441,21 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
         </ul>
         <a href="#contact" class="btn ghost" data-tier="Community Partner" data-i18n="ti.choose">Choose this tier</a>
       </article>
-      <article class="tier rv" data-a="1800" data-b="2880"><div class="shine"></div>
+      <article class="tier rv" data-name="Tournament Sponsor" data-a="1800" data-b="2880"><div class="shine"></div>
         <h3>Tournament Sponsor</h3>
         <div class="price" data-role="p">€1,800</div><div class="per" data-role="per">per 6 months</div><div class="save" data-role="s"></div>
         <ul>
           <li data-i18n="t2.1">Everything in Community Partner</li>
           <li data-i18n="t2.2">Logo on match kit at all Dutch and Italian tournaments</li>
-          <li data-i18n="t2.3">Exposure at Italian 3x3 circuit tournaments</li>
-          <li data-i18n="t2.4">Featured in all cross-border content</li>
-          <li data-i18n="t2.5">Logo on tournament banners and materials</li>
-          <li data-i18n="t2.6">Dedicated social post per tournament</li>
-          <li data-i18n="t2.7">Named in press or media coverage</li>
+          <li data-i18n="t2.3">Featured in all cross-border content</li>
+          <li data-i18n="t2.4">Logo on banners and materials at our own events</li>
+          <li data-i18n="t2.5">Dedicated social post per tournament</li>
+          <li data-i18n="t2.6">Named in every press release and interview we do</li>
         </ul>
         <a href="#contact" class="btn ghost" data-tier="Tournament Sponsor" data-i18n="ti.choose">Choose this tier</a>
       </article>
-      <article class="tier main rv" data-a="4000" data-b="6400"><div class="shine"></div>
-        <span class="badge" data-i18n="ti.badge">EXCLUSIVE · 1 SPOT</span>
+      <article class="tier main rv" data-name="Main Sponsor" data-a="4000" data-b="6400"><div class="shine"></div>
+        <span class="badge" data-i18n="ti.badge">EXCLUSIVE IN YOUR CATEGORY</span>
         <h3>Main Sponsor</h3>
         <div class="price" data-role="p">€4,000</div><div class="per" data-role="per">per 6 months</div><div class="save" data-role="s"></div>
         <ul>
@@ -345,7 +464,7 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
           <li data-i18n="t3.3">Primary logo on all kit, banners, backdrops and digital</li>
           <li data-i18n="t3.4">3–4 dedicated posts per tournament or event</li>
           <li data-i18n="t3.5">No competitor brand at Main Sponsor level</li>
-          <li data-i18n="t3.6">Client Italy experience in Le Marche</li>
+          <li data-i18n="t3.6">Hosted Italy experience in Le Marche</li>
           <li data-i18n="t3.7">First right of renewal as we scale</li>
           <li data-i18n="t3.8">Permanent founding partner recognition</li>
         </ul>
@@ -355,26 +474,14 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
   </div>
 </section>
 
-<section id="invest" style="background:var(--navy-800)">
+<section id="invest">
   <div class="wrap">
     <p class="eyebrow rv" data-i18n="in.eye">Where your investment goes</p>
-    <h2 class="rv" data-i18n="in.h2">Every euro goes <span class="gold">on the court</span></h2>
-    <p class="lead rv" data-i18n="in.p">Real equipment, real setup, real travel. You see exactly what you are building. Estimated costs:</p>
+    <h2 class="rv" data-i18n="in.h2">Every euro goes <span class="gold">into the game</span></h2>
+    <p class="lead rv" data-i18n="in.p">Real equipment, real setup, real travel. Estimated cost of running our first Dutch tournament:</p>
     <div class="budget rv" id="budget"></div>
-    <div class="total rv"><span data-i18n="in.total">TOTAL ESTIMATE</span><span class="gold">€2,200 – €3,600</span></div>
-  </div>
-</section>
-
-<section id="nijmegen">
-  <div class="wrap">
-    <p class="eyebrow rv" data-i18n="nj.eye">Why Nijmegen</p>
-    <h2 class="rv" data-i18n="nj.h2">Not a blank slate. <span class="gold">A city ready to play.</span></h2>
-    <p class="lead rv" data-i18n="nj.p">There is already a basketball community in Nijmegen. Freaks 3x3 brings structure, identity and international ambition to players who are ready for it.</p>
-    <div class="why">
-      <div class="card rv"><h3 data-i18n="nj.c1h">Why this investment</h3><p data-i18n="nj.c1p">Two markets, one partnership. Real infrastructure and visibility. A standalone Italy experience. Founding status that gets more valuable as the community grows, and the price will reflect that.</p></div>
-      <div class="card rv"><h3 data-i18n="nj.c2h">The city</h3><p data-i18n="nj.c2p">Pick-up culture, youth engagement through non-club basketball, Dutch and Italian players side by side, and Nijmegen players competing on Italian courts.</p></div>
-      <div class="card rv wide"><h3 data-i18n="nj.c3h">What we are looking for</h3><p data-i18n="nj.c3p">A permanent or regular court to anchor the community · connections to local businesses interested in cross-border sport · support in accessing municipal sport and community resources.</p></div>
-    </div>
+    <div class="total rv"><span data-i18n="in.total">TOTAL ESTIMATE</span><span class="gold" id="btotal">€2,200–3,600</span></div>
+    <div class="card whynow rv"><h3 data-i18n="in.wh">Why now</h3><p data-i18n="in.wp">Two markets, one partnership. Real equipment you can see. An Italy experience with value of its own. And founding partner status: the brands that join now are the ones that built this. Founding rates won't come back.</p></div>
   </div>
 </section>
 
@@ -382,125 +489,141 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
   <div class="wrap">
     <p class="eyebrow rv" data-i18n="ct.eye">Let's build this together</p>
     <h2 class="rv" data-i18n="ct.h2">Be there from <span class="gold">day one</span></h2>
-    <p class="lead rv" style="margin-inline:auto" data-i18n="ct.p">Tell us who you are and which tier fits. We'll reply with next steps.</p>
+    <p class="lead rv" style="margin-inline:auto" data-i18n="ct.p">Tell us about your brand and which tier fits. No commitment, just a conversation.</p>
     <form id="form" class="rv">
-      <input name="name" required data-i18n-ph="f.name" placeholder="Your name" aria-label="Name">
-      <input name="company" required data-i18n-ph="f.company" placeholder="Company / brand" aria-label="Company">
-      <input name="email" type="email" required data-i18n-ph="f.email" placeholder="Email" aria-label="Email">
-      <select name="tier" id="tierSel" aria-label="Tier">
-        <option value="Community Partner">Community Partner</option><option value="Tournament Sponsor">Tournament Sponsor</option><option value="Main Sponsor">Main Sponsor</option><option value="Not sure yet" data-i18n="f.unsure">Not sure yet</option>
-      </select>
-      <textarea name="msg" rows="3" data-i18n-ph="f.msg" placeholder="Anything we should know?" aria-label="Message"></textarea>
+      <label><span data-i18n="f.name">Your name</span><input name="name" required autocomplete="name"></label>
+      <label><span data-i18n="f.company">Company / brand</span><input name="company" required autocomplete="organization"></label>
+      <label><span data-i18n="f.email">Email</span><input name="email" type="email" required autocomplete="email"></label>
+      <label><span data-i18n="f.tier">Tier</span>
+        <select name="tier" id="tierSel">
+          <option value="Community Partner">Community Partner</option><option value="Tournament Sponsor">Tournament Sponsor</option><option value="Main Sponsor">Main Sponsor</option><option value="Not sure yet" data-i18n="f.unsure">Not sure yet</option>
+        </select>
+      </label>
+      <label><span data-i18n="f.msg">Message (optional)</span><textarea name="msg" rows="3"></textarea></label>
       <button class="btn primary" type="submit" style="justify-content:center" data-i18n="f.send">Send inquiry →</button>
-      <p id="thanks" data-i18n="f.thanks">Your email app should now open with the inquiry. Prefer DMs? Find us @freaks3x3.</p>
+      <p id="thanks" data-i18n="f.thanks">Your email app should now open with the inquiry to freaks3x3@gmail.com. Prefer WhatsApp? Use the button below.</p>
     </form>
     <div class="contacts rv">
-      <a href="https://instagram.com/freaks3x3" target="_blank" rel="noopener">📱 @freaks3x3</a>
-      <a href="tel:+31614395997">📞 Mohamed (NL) +31 6 1439 5997</a>
+      <a href="https://wa.me/31614395997" target="_blank" rel="noopener">💬 WhatsApp Mohamed (NL)</a>
+      <a href="mailto:freaks3x3@gmail.com">✉️ freaks3x3@gmail.com</a>
       <a href="tel:+393887657302">📞 Carlo (IT) +39 388 765 7302</a>
+      <a href="https://instagram.com/freaks3x3" target="_blank" rel="noopener">📱 @freaks3x3</a>
     </div>
   </div>
 </section>
 
-<footer data-i18n="foot">FREAKS 3x3 Netherlands — Nijmegen, 2026 · Born in Italy. Built in the Netherlands. Your brand on both.</footer>
+<footer>
+  <img src="assets/logo-gold.png" alt="" loading="lazy" width="776" height="1014">
+  <span data-i18n="foot">Freaks 3x3 NL · Nijmegen, 2026 · Born in Italy. Building Worldwide. Your brand on both.</span>
+</footer>
 
 <script>
 (()=>{
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const WA='31614395997';
 
 /* ---------- i18n: [nl, it]; English lives in the HTML ---------- */
-const H1=(a,b,c,d)=>`<span class="ln"><span>${a} <span class="gold">${b}</span></span></span><span class="ln"><span>${c} <span class="gold">${d}</span></span></span>`;
+const H1=(a,b,c,d,e)=>`<span class="ln"><span>${a} <span class="gold">${b}</span></span></span><span class="ln"><span>${c} <span class="gold">${d}</span></span></span><span class="ln"><span class="tag">${e}</span></span>`;
 const T={
- 'nav.about':['Community','Community'],
- 'nav.italy':['Italië-connectie','Connessione Italia'],
- 'nav.tiers':['Sponsoring','Sponsorizzazioni'],
- 'nav.cta':['Word partner','Diventa partner'],
- 'hero.h1':[H1('Geboren in','Italië.','Gebouwd in','Nijmegen.'),H1('Nati in','Italia.','Cresciuti a','Nijmegen.')],
- 'hero.p':['Een streetball-community met echte Italiaanse roots, nu op de Nederlandse courts. Eén investering. Twee landen. Eén community die net begint.','Una community streetball con vere radici italiane, ora sui campi olandesi. Un investimento. Due paesi. Una community appena nata.'],
- 'hero.cta':['Bekijk de pakketten →','Scopri i pacchetti →'],
+ 'nav.about':['Community','Community'],'nav.italy':['Italië','Italia'],'nav.kit':['Tenue','Divisa'],
+ 'nav.tiers':['Sponsoring','Sponsorizzazioni'],'nav.contact':['Contact','Contatti'],
+ 'nav.cta':['Word partner','Diventa partner'],'mcta':['Word partner →','Diventa partner →'],
+ 'hero.badge':['🏆 Kampioen van Nijmegen · Geplaatst voor de finale in Amsterdam','🏆 Campioni di Nijmegen · Qualificati per le finali di Amsterdam'],
+ 'hero.h1':[H1('Geboren in','Italië.','Groeien','wereldwijd.','Jouw merk in beide.'),H1('Nati in','Italia.','Cresciamo nel','mondo.','Il tuo brand in entrambi.')],
+ 'hero.p':['Een streetball-community met echte Italiaanse roots, nu winnend in Nijmegen. Eén partnerschap. Twee markten. Een verhaal dat net begint.','Una community streetball con vere radici italiane, ora vincente a Nijmegen. Una partnership. Due mercati. Una storia appena iniziata.'],
+ 'hero.cta':['Bekijk de pakketten →','Scopri i pacchetti →'],'hero.kit':['Bekijk het tenue','Vedi la divisa'],
  'hero.hint':['Trek de bal naar achteren en laat los om te schieten. Probeer de 12-seconden shot clock challenge.','Trascina la palla indietro e rilascia per tirare. Prova la sfida dei 12 secondi.'],
  'g.score':['PUNTEN','PUNTI'],'g.best':['RECORD','RECORD'],
- 'g.start':['⏱ 12s CHALLENGE','⏱ SFIDA 12s'],'g.stop':['STOP','STOP'],
- 'g.bucket':['RAAK!','CANESTRO!'],'g.fire':['ON FIRE 🔥','ON FIRE 🔥'],
- 'g.result':['{n} IN 12 SECONDEN','{n} IN 12 SECONDI'],
  'about.eye':['Wie we zijn','Chi siamo'],
- 'about.h2':['Het snelst groeiende<br>format in <span class="gold">urban basketball</span>','Il formato che cresce<br>di più nel <span class="gold">basket urbano</span>'],
- 'about.p':['Freaks 3x3 is een 3x3-basketbalcommunity die zes maanden geleden in Italië is ontstaan en nu uitbreidt naar Nederland. We spelen officiële toernooien, hebben een eigen merkidentiteit en groeien actief in de regio Nijmegen. We brengen de streetball-spirit naar de Nederlandse courts, met echte Italiaanse roots.','Freaks 3x3 è una community di basket 3x3 nata in Italia sei mesi fa e ora in espansione nei Paesi Bassi. Giochiamo tornei ufficiali, abbiamo una nostra identità di brand e stiamo crescendo nella zona di Nijmegen. Portiamo lo spirito streetball sui campi olandesi, con vere radici italiane.'],
- 'st.1':['volgers in minder dan 3 maanden','follower in meno di 3 mesi'],
- 'st.2':['maanden geleden gestart in Italië','mesi dalla nascita in Italia'],
- 'st.3':['landen, één community','paesi, una community'],
- 'st.4':['shot clock. 3x3 is het snelste spel op de court','di cronometro. Il 3x3 è il gioco più veloce sul campo'],
+ 'about.h2':['Het Olympische format<br>van <span class="gold">streetball</span>','Il formato olimpico<br>dello <span class="gold">streetball</span>'],
+ 'about.p':['Freaks 3x3 is een basketbalcommunity, in Italië opgericht door <strong>Nicola Paradisi</strong> en in Nijmegen geleid door <strong>Mohamed Carlo Sow</strong>. We spelen officiële FIBA 3x3-toernooien in ons eigen tenue, organiseren pick-up games in de stad en nemen Nederlandse spelers mee naar Italiaanse courts. 3x3 is sinds Tokio 2020 een Olympische sport.','Freaks 3x3 è una community di basket fondata in Italia da <strong>Nicola Paradisi</strong> e guidata a Nijmegen da <strong>Mohamed Carlo Sow</strong>. Giochiamo tornei ufficiali FIBA 3x3 con la nostra divisa, organizziamo partite pick-up in città e portiamo giocatori olandesi sui campi italiani. Il 3x3 è sport olimpico da Tokyo 2020.'],
+ 'pr.cap':['🏆 Kampioen stadstoernooi Nijmegen','🏆 Campioni del torneo cittadino di Nijmegen'],
+ 'pr.h3':['Kampioen van Nijmegen.<br>Volgende halte: <span class="gold">Amsterdam.</span>','Campioni di Nijmegen.<br>Prossima tappa: <span class="gold">Amsterdam.</span>'],
+ 'pr.p':['We wonnen het 3x3-stadstoernooi van Nijmegen in het Freaks 3x3-tenue en plaatsten ons voor de finale in Amsterdam, tegen de kampioenen van andere steden.','Abbiamo vinto il torneo cittadino 3x3 di Nijmegen con la divisa Freaks 3x3 e ci siamo qualificati per le finali di Amsterdam, contro i campioni delle altre città.'],
+ 'st.1':['stadstoernooi Nijmegen','torneo cittadino di Nijmegen'],
+ 'st.2':['geplaatst voor de finale in Amsterdam','qualificati per le finali di Amsterdam'],
+ 'st.3':['volgers in minder dan 3 maanden','follower in meno di 3 mesi'],
+ 'st.4':['landen, één community','paesi, una community'],
  'about.h3a':['Wat we doen','Cosa facciamo'],
- 'do.1':['Officiële FIBA 3x3-circuittoernooien','Tornei ufficiali del circuito FIBA 3x3'],
+ 'do.1':['Officiële FIBA 3x3-circuittoernooien in Italië en Nederland','Tornei ufficiali del circuito FIBA 3x3 in Italia e nei Paesi Bassi'],
  'do.2':['Regelmatige pick-up games in Nijmegen','Partite pick-up regolari a Nijmegen'],
  'do.3':['Grensoverschrijdende trips: NL-spelers op Italiaanse toernooien','Trasferte: giocatori olandesi nei tornei italiani'],
  'do.4':['Actief op social media in beide landen','Presenza social attiva in entrambi i paesi'],
  'do.5':['Op weg naar het eerste Freaks 3x3-toernooi in Nederland','Verso il primo torneo Freaks 3x3 nei Paesi Bassi'],
- 'about.h3b':['Waar we staan','A che punto siamo'],
- 'ws.1':['Nijmegen is onze stad, er vormt zich al een basketbalcommunity','Nijmegen è la nostra città, con una community di basket già in formazione'],
- 'ws.2':['Al toernooien gespeeld in het officiële Freaks 3x3-tenue','Già scesi in campo nei tornei con il kit ufficiale Freaks 3x3'],
- 'ws.3':['Actief op zoek naar lokale spelers voor de NL-selectie','Reclutiamo attivamente giocatori locali per il roster olandese'],
- 'ws.4':['Op zoek naar founding partners die vanaf dag één meegroeien','Cerchiamo founding partner che crescano con noi dal primo giorno'],
+ 'about.h3b':['Waarom Nijmegen','Perché Nijmegen'],
+ 'nj.1':['Er is hier al een pick-up-basketbalcultuur','Qui esiste già una cultura del basket pick-up'],
+ 'nj.2':['Jongeren bereiken met toegankelijk basketbal buiten de club','Giovani coinvolti con un basket accessibile, fuori dai club'],
+ 'nj.3':['Nederlandse en Italiaanse spelers zij aan zij','Giocatori olandesi e italiani fianco a fianco'],
+ 'nj.4':['Actief op zoek naar lokale spelers voor de NL-selectie','Reclutiamo giocatori locali per il roster olandese'],
+ 'nj.5':['We zoeken een vaste court, lokale zakenpartners en steun van de gemeente','Cerchiamo un campo fisso, partner locali e supporto dal comune'],
  'it.eye':['De Italië-connectie','La connessione italiana'],
  'it.h2':['Jouw merk <span class="gold">reist</span> met ons mee','Il tuo brand <span class="gold">viaggia</span> con noi'],
- 'it.p':['Geen andere Nederlandse sportcommunity is echt Italiaans. Onze community is opgericht in Italië, ons netwerk daar is actief en onze spelers spelen regelmatig op Italiaanse courts. Als sponsor gaat jouw merk mee.','Nessun’altra community sportiva olandese è davvero italiana. Siamo nati in Italia, la nostra rete lì è attiva e i nostri giocatori giocano regolarmente sui campi italiani. Come sponsor, il tuo brand viene con noi.'],
+ 'it.p':['We zijn geen Nederlandse club met een Italiaanse naam. We zijn opgericht in Italië, ons netwerk daar is actief en onze spelers spelen op Italiaanse courts. Als sponsor gaat jouw merk mee.','Non siamo un club olandese con un nome italiano. Siamo nati in Italia, la nostra rete lì è attiva e i nostri giocatori giocano sui campi italiani. Come sponsor, il tuo brand viene con noi.'],
+ 'it.cap':['🇮🇹 Op de court bij een 3x3-event in Italië','🇮🇹 In campo a un evento 3x3 in Italia'],
  'it.svg':['JOUW LOGO IN BEIDE','IL TUO LOGO IN ENTRAMBI'],
- 'it.c1h':['Jouw merk op Italiaanse courts','Il tuo brand sui campi italiani'],
- 'it.c1p':['Onze trips omvatten professionele 3x3-circuitevents met officiële backdrops, media-aandacht en een groot publiek.','Le nostre trasferte includono eventi professionali del circuito 3x3 con backdrop ufficiali, media e grande pubblico.'],
+ 'it.c1h':['Jouw logo op Italiaanse courts','Il tuo logo sui campi italiani'],
+ 'it.c1p':['We spelen 3x3-circuitevents in Italië. Jouw logo speelt mee: op ons tenue en in elke foto en video die we mee naar huis nemen.','Giochiamo eventi del circuito 3x3 in Italia. Il tuo logo gioca con noi: sulla divisa e in ogni foto e video che portiamo a casa.'],
  'it.c2h':['Grensoverschrijdende content','Contenuti cross-border'],
  'it.c2p':['Elke trip levert wedstrijden, steden en cultuur op, gedeeld op onze kanalen in beide landen. Plekken die je met gewone reclame niet kunt kopen.','Ogni trasferta produce partite, città e cultura, condivise sui nostri canali in entrambi i paesi. Contesti che la pubblicità tradizionale non può comprare.'],
- 'it.c3h':['Italië-ervaring voor klanten','Esperienza Italia per i clienti'],
- 'it.c3p':['Exclusief voor de Main Sponsor: privéaccommodatie, een huurauto en rondleidingen langs de kust, de rivier en de beste lokale restaurants van Le Marche.','Esclusiva Main Sponsor: alloggio privato, auto a noleggio e visite guidate tra costa, fiume e i migliori ristoranti delle Marche.'],
+ 'it.c3h':['Thuiskomen in Le Marche','Di casa nelle Marche'],
+ 'it.c3p':['Exclusief voor de Main Sponsor: verblijf in de B&amp;B van een vriend, leen een auto en laat ons de kust, de heuvels en de lokale keuken zien waarmee we zijn opgegroeid. Data in overleg.','Esclusiva Main Sponsor: soggiorno nel B&amp;B di un amico, un’auto a disposizione e noi a mostrarti la costa, le colline e le tavole con cui siamo cresciuti. Date da concordare insieme.'],
+ 'kit.eye':['Het zomertenue','La divisa estiva'],
+ 'kit.h2':['Draag het. <span class="gold">Of zet je logo erop.</span>','Indossala. <span class="gold">O mettici il tuo logo.</span>'],
+ 'kit.p':['Ons zomertenue in drie kleuren. Draai het om en zie waar elk sponsorpakket op de achterkant komt.','La nostra divisa estiva in tre colori. Girala per vedere dove va ogni livello di sponsor sul retro.'],
+ 'kit.note':['Voorbeeldplaatsing op ons huidige tenue. Community Partners staan op de trainings- en communitykleding. Tik op een gouden markering om dat pakket te zien.','Esempio di posizionamento sulla divisa attuale. I Community Partner vanno sul kit da allenamento e community. Tocca un indicatore dorato per vedere il pacchetto.'],
+ 'kit.hs1':['Main Sponsor: hoofdlogo','Main Sponsor: logo principale'],
+ 'kit.hs2':['Tournament Sponsor: wedstrijdtenue','Tournament Sponsor: divisa da gara'],
+ 'kit.white':['Wit','Bianco'],'kit.orange':['Oranje','Arancione'],'kit.red':['Rood','Rosso'],
+ 'kit.jersey':['Shirt','Canotta'],'kit.shorts':['Short','Pantaloncini'],'kit.set':['Complete set','Set completo'],
+ 'kit.order':['Bestel via WhatsApp →','Ordina su WhatsApp →'],'kit.sizes':['Maten XS–XXL','Taglie XS–XXL'],
  'ti.eye':['Sponsoring 2026','Sponsorizzazioni 2026'],
  'ti.h2':['Kies jouw <span class="gold">niveau</span>','Scegli il tuo <span class="gold">livello</span>'],
  'ti.p':['Twee betaalopties per pakket: per 6 maanden, of het hele jaar vooruit met 20% korting.','Due opzioni di pagamento per ogni pacchetto: ogni 6 mesi, oppure l’anno intero in anticipo con il 20% di sconto.'],
  'ti.t6':['Per 6 maanden','Ogni 6 mesi'],'ti.t12':['Heel jaar · −20%','Anno intero · −20%'],
- 'ti.per6':['per 6 maanden','ogni 6 mesi'],'ti.per12':['per jaar, vooruitbetaald','all’anno, pagato in anticipo'],'ti.save':['Bespaar','Risparmi'],
+ 'ti.vat':['Prijzen excl. btw, indien van toepassing.','Prezzi IVA esclusa, ove applicabile.'],
  'ti.choose':['Kies dit pakket','Scegli questo pacchetto'],
- 'ti.badge':['EXCLUSIEF · 1 PLEK','ESCLUSIVO · 1 POSTO'],
+ 'ti.badge':['EXCLUSIEF IN JOUW BRANCHE','ESCLUSIVO NEL TUO SETTORE'],
  't1.1':['Logo op alle NL-trainings- en communitykleding','Logo su tutto il kit da allenamento e community NL'],
  't1.2':['Zichtbaar in alle communityposts en eventaankondigingen','Presenza in tutti i post e gli annunci degli eventi'],
  't1.3':['Vermeld als officiële Community Partner','Citato come Community Partner ufficiale'],
  't1.4':['Uitnodiging voor alle communityevents','Invito a tutti gli eventi della community'],
  't2.1':['Alles uit Community Partner','Tutto il pacchetto Community Partner'],
- 't2.2':['Logo op het wedstrijdtenue bij alle Nederlandse en Italiaanse toernooien','Logo sul kit da gara in tutti i tornei olandesi e italiani'],
- 't2.3':['Zichtbaarheid op Italiaanse 3x3-circuittoernooien','Visibilità nei tornei del circuito 3x3 in Italia'],
- 't2.4':['Te zien in alle grensoverschrijdende content','Presente in tutti i contenuti cross-border'],
- 't2.5':['Logo op toernooibanners en -materialen','Logo su banner e materiali dei tornei'],
- 't2.6':['Eigen social post per toernooi','Post social dedicato per ogni torneo'],
- 't2.7':['Genoemd in pers- en media-aandacht','Citato nella copertura stampa e media'],
+ 't2.2':['Logo op het wedstrijdtenue bij alle Nederlandse en Italiaanse toernooien','Logo sulla divisa da gara in tutti i tornei olandesi e italiani'],
+ 't2.3':['Te zien in alle grensoverschrijdende content','Presente in tutti i contenuti cross-border'],
+ 't2.4':['Logo op banners en materialen bij onze eigen events','Logo su banner e materiali dei nostri eventi'],
+ 't2.5':['Eigen social post per toernooi','Post social dedicato per ogni torneo'],
+ 't2.6':['Genoemd in elk persbericht en interview dat we doen','Citato in ogni comunicato stampa e intervista che facciamo'],
  't3.1':['Alles uit Tournament Sponsor','Tutto il pacchetto Tournament Sponsor'],
  't3.2':['Naamrecht: het eerste Freaks 3x3 NL-toernooi, presented by jouw merk','Naming rights: il primo torneo Freaks 3x3 NL, presented by il tuo brand'],
- 't3.3':['Hoofdlogo op alle kleding, banners, backdrops en digitale content','Logo principale su kit, banner, backdrop e contenuti digitali'],
+ 't3.3':['Hoofdlogo op alle kleding, banners, backdrops en digitale content','Logo principale su divise, banner, backdrop e contenuti digitali'],
  't3.4':['3–4 eigen posts per toernooi of event','3–4 post dedicati per torneo o evento'],
  't3.5':['Geen concurrerend merk op Main Sponsor-niveau','Nessun concorrente a livello Main Sponsor'],
- 't3.6':['Italië-ervaring voor klanten in Le Marche','Esperienza Italia per i clienti nelle Marche'],
+ 't3.6':['Verzorgde Italië-ervaring in Le Marche','Esperienza Italia ospitata nelle Marche'],
  't3.7':['Eerste recht op verlenging als we groeien','Diritto di prelazione sul rinnovo mentre cresciamo'],
  't3.8':['Blijvende erkenning als founding partner','Riconoscimento permanente come founding partner'],
  'in.eye':['Waar je investering naartoe gaat','Dove va il tuo investimento'],
- 'in.h2':['Elke euro gaat <span class="gold">de court op</span>','Ogni euro va <span class="gold">in campo</span>'],
- 'in.p':['Echte uitrusting, echte opbouw, echte reizen. Je ziet precies wat je bouwt. Geschatte kosten:','Attrezzatura vera, allestimento vero, trasferte vere. Vedi esattamente cosa costruisci. Costi stimati:'],
+ 'in.h2':['Elke euro gaat <span class="gold">naar het spel</span>','Ogni euro va <span class="gold">nel gioco</span>'],
+ 'in.p':['Echte uitrusting, echte opbouw, echte reizen. Geschatte kosten van ons eerste Nederlandse toernooi:','Attrezzatura vera, allestimento vero, trasferte vere. Costo stimato del nostro primo torneo olandese:'],
  'in.total':['TOTAAL GESCHAT','TOTALE STIMATO'],
- 'nj.eye':['Waarom Nijmegen','Perché Nijmegen'],
- 'nj.h2':['Geen leeg blad. <span class="gold">Een stad klaar om te spelen.</span>','Non si parte da zero. <span class="gold">Una città pronta a giocare.</span>'],
- 'nj.p':['Er is al een basketbalcommunity in Nijmegen. Freaks 3x3 brengt structuur, identiteit en internationale ambitie naar spelers die er klaar voor zijn.','A Nijmegen esiste già una community di basket. Freaks 3x3 porta struttura, identità e ambizione internazionale a giocatori pronti per il salto.'],
- 'nj.c1h':['Waarom deze investering','Perché investire'],
- 'nj.c1p':['Twee markten, één partnerschap. Echte infrastructuur en zichtbaarheid. Een Italië-ervaring met eigen waarde. Founding-status die meer waard wordt naarmate de community groeit, en de prijs gaat mee.','Due mercati, una partnership. Infrastrutture e visibilità reali. Un’esperienza in Italia che vale da sola. Uno status di founding partner che cresce di valore con la community, e il prezzo lo rifletterà.'],
- 'nj.c2h':['De stad','La città'],
- 'nj.c2p':['Pick-up-cultuur, jongeren bereiken via basketbal buiten de club, Nederlandse en Italiaanse spelers zij aan zij, en Nijmeegse spelers op Italiaanse courts.','Cultura pick-up, giovani coinvolti con il basket fuori dai club, giocatori olandesi e italiani fianco a fianco, e giocatori di Nijmegen sui campi italiani.'],
- 'nj.c3h':['Waar we naar zoeken','Cosa cerchiamo'],
- 'nj.c3p':['Een vaste of regelmatige court als thuisbasis · contacten met lokale bedrijven die interesse hebben in grensoverschrijdende sport · hulp bij toegang tot gemeentelijke sport- en communityvoorzieningen.','Un campo fisso o regolare come base · contatti con aziende locali interessate allo sport cross-border · supporto per accedere alle risorse comunali per sport e community.'],
+ 'in.wh':['Waarom nu','Perché ora'],
+ 'in.wp':['Twee markten, één partnerschap. Echte uitrusting die je kunt zien. Een Italië-ervaring met eigen waarde. En de status van founding partner: de merken die nu instappen, zijn de merken die dit hebben gebouwd. Founding-tarieven komen niet terug.','Due mercati, una partnership. Attrezzatura vera, che puoi vedere. Un’esperienza in Italia che vale da sola. E lo status di founding partner: i brand che entrano ora sono quelli che hanno costruito tutto questo. Le tariffe founding non torneranno.'],
  'ct.eye':['Laten we dit samen bouwen','Costruiamolo insieme'],
  'ct.h2':['Erbij vanaf <span class="gold">dag één</span>','Con noi dal <span class="gold">primo giorno</span>'],
- 'ct.p':['Vertel ons wie je bent en welk pakket past. We reageren met de volgende stappen.','Dicci chi sei e quale pacchetto fa per te. Ti risponderemo con i prossimi passi.'],
+ 'ct.p':['Vertel ons over je merk en welk pakket past. Geen verplichtingen, gewoon een gesprek.','Raccontaci del tuo brand e quale pacchetto fa per te. Nessun impegno, solo una conversazione.'],
  'f.name':['Je naam','Il tuo nome'],'f.company':['Bedrijf / merk','Azienda / brand'],'f.email':['E-mail','Email'],
- 'f.unsure':['Weet ik nog niet','Non so ancora'],'f.msg':['Iets dat we moeten weten?','Qualcosa che dovremmo sapere?'],
+ 'f.tier':['Pakket','Pacchetto'],'f.unsure':['Weet ik nog niet','Non so ancora'],'f.msg':['Bericht (optioneel)','Messaggio (facoltativo)'],
  'f.send':['Verstuur aanvraag →','Invia richiesta →'],
- 'f.thanks':['Je mailprogramma opent nu met de aanvraag. Liever een DM? Vind ons op @freaks3x3.','La tua app email si aprirà con la richiesta. Preferisci un DM? Trovaci su @freaks3x3.'],
- 'foot':['FREAKS 3x3 Nederland — Nijmegen, 2026 · Geboren in Italië. Gebouwd in Nederland. Jouw merk in beide.','FREAKS 3x3 Paesi Bassi — Nijmegen, 2026 · Nati in Italia. Cresciuti nei Paesi Bassi. Il tuo brand in entrambi.'],
+ 'f.thanks':['Je mailprogramma opent nu met de aanvraag aan freaks3x3@gmail.com. Liever WhatsApp? Gebruik de knop hieronder.','La tua app email si aprirà con la richiesta a freaks3x3@gmail.com. Preferisci WhatsApp? Usa il pulsante qui sotto.'],
+ 'foot':['Freaks 3x3 NL · Nijmegen, 2026 · Geboren in Italië. Groeien wereldwijd. Jouw merk in beide.','Freaks 3x3 NL · Nijmegen, 2026 · Nati in Italia. Cresciamo nel mondo. Il tuo brand in entrambi.'],
+ // strings used only from JS
+ 'ti.per6':['per 6 maanden','ogni 6 mesi'],'ti.per12':['per jaar, vooruitbetaald','all’anno, pagato in anticipo'],'ti.save':['Bespaar','Risparmi'],
+ 'g.start':['⏱ 12s CHALLENGE','⏱ SFIDA 12s'],'g.stop':['STOP','STOP'],'g.bucket':['RAAK!','CANESTRO!'],'g.fire':['ON FIRE 🔥','ON FIRE 🔥'],
+ 'g.result':['{n} IN 12 SECONDEN','{n} IN 12 SECONDI'],
+ 'kit.back':['Bekijk achterkant ↻','Vedi retro ↻'],'kit.front':['Bekijk voorkant ↻','Vedi fronte ↻'],
+ 'kit.wa':['Hoi! Ik wil graag het Freaks 3x3-tenue in {c} bestellen. Maat: ','Ciao! Vorrei ordinare la divisa Freaks 3x3 {c}. Taglia: '],
 };
-const EN={'ti.per6':'per 6 months','ti.per12':'per year, paid upfront','ti.save':'Save','g.start':'⏱ 12s CHALLENGE','g.stop':'STOP','g.bucket':'BUCKET!','g.fire':'ON FIRE 🔥','g.result':'{n} IN 12 SECONDS'};
+const EN={'ti.per6':'per 6 months','ti.per12':'per year, paid upfront','ti.save':'Save','g.start':'⏱ 12s CHALLENGE','g.stop':'STOP','g.bucket':'BUCKET!','g.fire':'ON FIRE 🔥','g.result':'{n} IN 12 SECONDS','kit.back':'Show back ↻','kit.front':'Show front ↻',"kit.wa":"Hi! I'd like to order the Freaks 3x3 kit in {c}. Size: ",'kit.white':'white','kit.orange':'orange','kit.red':'red'};
 const BUDGET=[[['FIBA 3x3 Official Balls (×3)','Officiële FIBA 3x3-ballen (×3)','Palloni ufficiali FIBA 3x3 (×3)'],450,600],
  [['Shot Clock (FIBA compliant)','Shot clock (FIBA-conform)','Shot clock (conforme FIBA)'],300,600],
  [['Tournament Backdrop & Banners','Toernooi-backdrop & banners','Backdrop e banner torneo'],200,400],
@@ -510,61 +633,94 @@ const BUDGET=[[['FIBA 3x3 Official Balls (×3)','Officiële FIBA 3x3-ballen (×3
 let lang='en';const LI={en:-1,nl:0,it:1};
 const orig=new Map();
 $$('[data-i18n]').forEach(e=>orig.set(e,e.innerHTML));
-$$('[data-i18n-ph]').forEach(e=>orig.set(e,e.placeholder));
+$$('[data-i18n-al]').forEach(e=>orig.set(e,e.getAttribute('aria-label')));
 const t=k=>lang==='en'?(EN[k]??k):(T[k]?.[LI[lang]]??EN[k]??k);
+const loc=()=>lang==='en'?'en-US':lang+'-'+lang.toUpperCase();
+const fmt=(n,d=0)=>'€'+n.toLocaleString(loc(),{minimumFractionDigits:d,maximumFractionDigits:d});
+const rng=(a,b)=>fmt(a)+'–'+b.toLocaleString(loc());
 function setLang(l){
   lang=l;document.documentElement.lang=l;
   $$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
-  $$('[data-i18n]').forEach(e=>{const k=e.dataset.i18n;
-    if(k==='g.start'){e.textContent=t(game.ch?'g.stop':'g.start');return}
-    e.innerHTML=l==='en'?orig.get(e):(T[k]?.[LI[l]]??orig.get(e))});
-  $$('[data-i18n-ph]').forEach(e=>{e.placeholder=l==='en'?orig.get(e):(T[e.dataset.i18nPh]?.[LI[l]]??orig.get(e))});
-  $$('.bar>span:first-child').forEach((s,i)=>s.textContent=BUDGET[i][0][l==='en'?0:LI[l]+1]);
-  setBilling(yearly);
+  $$('[data-i18n]').forEach(e=>{e.innerHTML=l==='en'?orig.get(e):(T[e.dataset.i18n]?.[LI[l]]??orig.get(e))});
+  $$('[data-i18n-al]').forEach(e=>e.setAttribute('aria-label',l==='en'?orig.get(e):(T[e.dataset.i18nAl]?.[LI[l]]??orig.get(e))));
+  renderBudget();setBilling(yearly);syncKit();
+  $('#chall').textContent=t(game.ch?'g.stop':'g.start');
   try{localStorage.setItem('f3lang',l)}catch(_){}
 }
 $$('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 
-/* ---------- nav ---------- */
+/* ---------- nav + sticky mobile CTA ---------- */
 addEventListener('pointermove',e=>{const s=document.documentElement.style;s.setProperty('--mx',e.clientX+'px');s.setProperty('--my',e.clientY+'px')});
 addEventListener('scroll',()=>$('#nav').classList.toggle('solid',scrollY>40),{passive:true});
 $('#burger').onclick=()=>{const o=$('#menu').classList.toggle('open');$('#burger').setAttribute('aria-expanded',o)};
-$$('#menu a').forEach(a=>a.addEventListener('click',()=>$('#menu').classList.remove('open')));
+$$('#menu a').forEach(a=>a.addEventListener('click',()=>{$('#menu').classList.remove('open');$('#burger').setAttribute('aria-expanded',false)}));
 const navIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$('#menu a').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
-['about','italy','tiers','invest','nijmegen','contact'].forEach(id=>navIO.observe(document.getElementById(id)));
+['about','italy','kit','tiers','invest','contact'].forEach(id=>navIO.observe(document.getElementById(id)));
+let pastHero=false,atContact=false;const mc=()=>$('#mcta').classList.toggle('show',pastHero&&!atContact);
+new IntersectionObserver(([e])=>{pastHero=!e.isIntersecting;mc()}).observe($('#hero'));
+new IntersectionObserver(([e])=>{atContact=e.isIntersecting;mc()},{threshold:.05}).observe($('#contact'));
 
 /* ---------- marquee ---------- */
-const words=['FREAKS 3x3','NIJMEGEN','LE MARCHE','FIBA 3x3','STREETBALL','12 SECONDS','FOUNDING PARTNERS'];
+const words=['FREAKS 3x3','NIJMEGEN CHAMPIONS','NEXT STOP: AMSTERDAM','LE MARCHE','FIBA 3x3','BUILDING WORLDWIDE','FOUNDING PARTNERS'];
 $('#mq').innerHTML=(words.map(w=>w+'<span>●</span>').join('')).repeat(4);
 
 /* ---------- reveals, counters, budget ---------- */
-$('#budget').innerHTML=BUDGET.map(b=>`<div class="bar"><span>${b[0][0]}</span><div class="track"><div class="fill" data-w="${b[2]/1200*100}"></div></div><span>€${b[1]} – ${b[2]}</span></div>`).join('');
-function count(el){const n=+el.dataset.n,suf=el.dataset.suf||'';let t0=null;(function f(ts){t0??=ts;const p=Math.min((ts-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(f)})(performance.now())}
+function renderBudget(){
+  const i=lang==='en'?0:LI[lang]+1,open=$('#budget').classList.contains('in');
+  $('#budget').innerHTML=BUDGET.map(b=>`<div class="bar"><span>${b[0][i]}</span><div class="track"><div class="fill" data-w="${b[2]/12}" style="width:${open?b[2]/12:0}%"></div></div><span>${rng(b[1],b[2])}</span></div>`).join('');
+  $('#btotal').textContent=rng(2200,3600);
+}
+function count(el){const n=+el.dataset.n,suf=el.dataset.suf||'';let t0=null;(function f(ts){t0??=ts;const p=Math.min((ts-t0)/1200,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(f)})(performance.now())}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add('in');
-  el.querySelectorAll('[data-n]').forEach(count);el.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%');io.unobserve(el)}),{threshold:.12});
+  if(!reduce)el.querySelectorAll('[data-n]').forEach(count);el.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%');io.unobserve(el)}),{threshold:.12});
 $$('.rv').forEach(el=>io.observe(el));
 
+/* ---------- photo parallax ---------- */
+const photos=$$('.photo img');
+function para(){const vh=innerHeight;photos.forEach(img=>{const r=img.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;
+  const p=(r.top+r.height/2-vh/2)/vh;img.style.transform=`translateY(${-6.5+p*-6}%)`})}
+if(!reduce){addEventListener('scroll',para,{passive:true});para()}
+
 /* ---------- pricing ---------- */
-const fmt=n=>"€"+n.toLocaleString(lang==="en"?"en-US":lang+"-"+lang.toUpperCase());let yearly=false;
+let yearly=false;
 function setBilling(y){
   yearly=y;$('#t6').classList.toggle('on',!y);$('#t12').classList.toggle('on',y);
   $$('.tier').forEach(tr=>{const a=+tr.dataset.a,b=+tr.dataset.b,p=tr.querySelector('[data-role=p]'),from=+p.dataset.v||a,to=y?b:a;
-    p.dataset.v=to;let t0=null;(function f(ts){t0??=ts;const k=Math.min((ts-t0)/450,1);p.textContent=fmt(Math.round(from+(to-from)*k));if(k<1)requestAnimationFrame(f)})(performance.now());
+    p.dataset.v=to;let t0=null;(function f(ts){t0??=ts;const k=reduce?1:Math.min((ts-t0)/450,1);p.textContent=fmt(Math.round(from+(to-from)*k));if(k<1)requestAnimationFrame(f)})(performance.now());
     tr.querySelector('[data-role=per]').textContent=t(y?'ti.per12':'ti.per6');
     tr.querySelector('[data-role=s]').textContent=y?t('ti.save')+' '+fmt(a*2-b):''});
 }
 $('#t6').onclick=()=>setBilling(false);$('#t12').onclick=()=>setBilling(true);
 $$('[data-tier]').forEach(a=>a.addEventListener('click',()=>{$('#tierSel').value=a.dataset.tier}));
-// tilt + shine on tier cards (pointer devices only)
 if(matchMedia('(hover:hover)').matches&&!reduce)$$('.tier').forEach(c=>{
   c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
     c.style.transform=`rotateY(${(x-.5)*10}deg) rotateX(${(.5-y)*8}deg) translateY(-6px)`;c.style.setProperty('--sx',x*100+'%');c.style.setProperty('--sy',y*100+'%')});
   c.addEventListener('pointerleave',()=>c.style.transform='')});
 
-/* ---------- form → mailto (no backend yet) ---------- */
+/* ---------- kit viewer + order ---------- */
+let kitColor='white',kitBack=false;
+['white','orange','red'].forEach(c=>['front','back'].forEach(s=>{new Image().src=`assets/kit-${c}-${s}.webp`}));
+function syncKit(){
+  $('#kitF').src=`assets/kit-${kitColor}-front.webp`;$('#kitB').src=`assets/kit-${kitColor}-back.webp`;
+  $('#flip').classList.toggle('b',kitBack);$('#flipBtn').textContent=t(kitBack?'kit.front':'kit.back');
+  $$('.sw').forEach(s=>s.classList.toggle('on',s.dataset.c===kitColor));
+  $('#pJ').textContent=fmt(44.5,2);$('#pS').textContent=fmt(29.98,2);$('#pX').textContent=fmt(69.99,2);
+  const colour=t('kit.'+kitColor).toLowerCase();
+  $('#order').href=`https://wa.me/${WA}?text=`+encodeURIComponent(t('kit.wa').replace('{c}',colour));
+}
+const flip=()=>{kitBack=!kitBack;syncKit()};
+$('#flipBtn').onclick=flip;
+$('#stage').addEventListener('click',e=>{if(!e.target.closest('.hs'))flip()});
+$('#stage').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
+$$('.sw').forEach(s=>s.onclick=()=>{kitColor=s.dataset.c;syncKit()});
+$$('.hs').forEach(h=>h.onclick=e=>{e.stopPropagation();const name=h.dataset.go,card=$(`.tier[data-name="${name}"]`);
+  $('#tierSel').value=name;card.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+  card.classList.remove('flash');void card.offsetWidth;card.classList.add('flash')});
+
+/* ---------- form → email to freaks3x3@gmail.com (no backend yet) ---------- */
 $('#form').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);
   const body=`Name: ${f.get('name')}\nCompany: ${f.get('company')}\nEmail: ${f.get('email')}\nTier: ${f.get('tier')}\n\n${f.get('msg')}`;
-  location.href='mailto:?subject='+encodeURIComponent('Freaks 3x3 sponsorship inquiry')+'&body='+encodeURIComponent(body);
+  location.href='mailto:freaks3x3@gmail.com?subject='+encodeURIComponent('Sponsorship inquiry: '+f.get('company'))+'&body='+encodeURIComponent(body);
   $('#thanks').style.display='block'});
 
 /* ---------- hero background ---------- */
@@ -593,9 +749,14 @@ function rest(){ball={x:70,y:GH-60,vx:0,vy:0,fly:false,t:0};scored=false;waiting
 function gsize(){const r=box.getBoundingClientRect(),d=devicePixelRatio||1;GW=r.width;GH=r.height;gc.width=GW*d;gc.height=GH*d;g.setTransform(d,0,0,d,0,0);MAXP=1.05*Math.sqrt(GH);placeHoop(false);rest()}
 function toast(s){const e=$('#toast');e.textContent=s;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),1000)}
 function pos(e){const r=gc.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+const onBall=p=>!ball.fly&&!waiting&&Math.hypot(p.x-ball.x,p.y-ball.y)<R*2.6;
 function vel(){const dx=ball.x-drag.x,dy=ball.y-drag.y,m=Math.min(Math.hypot(dx,dy),PULL)/PULL,a=Math.atan2(dy,dx);return[Math.cos(a)*m*MAXP,Math.sin(a)*m*MAXP,m]}
-gc.addEventListener('pointerdown',e=>{const p=pos(e);if(!ball.fly&&!waiting&&Math.hypot(p.x-ball.x,p.y-ball.y)<R*2.6){drag=p;gc.setPointerCapture(e.pointerId)}});
+// Touch: the page scrolls normally over the game; only a touch that starts on the ball is captured.
+gc.addEventListener('touchstart',e=>{const t0=e.touches[0],r=gc.getBoundingClientRect();if(onBall({x:t0.clientX-r.left,y:t0.clientY-r.top}))e.preventDefault()},{passive:false});
+gc.addEventListener('touchmove',e=>{if(drag)e.preventDefault()},{passive:false});
+gc.addEventListener('pointerdown',e=>{const p=pos(e);if(onBall(p)){drag=p;gc.setPointerCapture(e.pointerId)}});
 gc.addEventListener('pointermove',e=>{if(drag)drag=pos(e)});
+gc.addEventListener('pointercancel',()=>{drag=null});
 gc.addEventListener('pointerup',()=>{if(!drag)return;const[vx,vy,m]=vel();drag=null;if(m<.08)return;ball.vx=vx;ball.vy=vy;ball.fly=true;ball.t=0;scored=false});
 function finish(delay){if(waiting)return;waiting=true;ball.fly=false;setTimeout(rest,delay)}
 function make(){
@@ -650,7 +811,8 @@ function draw(){
 function loop(){requestAnimationFrame(loop);if(!heroOn)return;step();draw()}
 gsize();showBest();addEventListener('resize',gsize);loop();
 
-/* ---------- initial language: saved choice, else browser ---------- */
+/* ---------- init ---------- */
+renderBudget();syncKit();
 let start='en';try{start=localStorage.getItem('f3lang')||''}catch(_){}
 if(!start){const n=(navigator.language||'').slice(0,2);start=LI[n]!==undefined?n:'en'}
 if(start!=='en')setLang(start);
