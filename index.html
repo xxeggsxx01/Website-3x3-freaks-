@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FREAKS 3x3 — Born in Italy. Built in Nijmegen.</title>
+<meta name="description" content="Freaks 3x3 is a 3x3 basketball community born in Italy, growing in Nijmegen. Become a founding partner: one investment, two countries.">
+<style>
+:root{
+  --navy-900:#050b1c; --navy-800:#08122b; --navy-700:#0d1c42; --navy-600:#14295e;
+  --gold:#f5c542; --gold-2:#ffdf7e; --gold-3:#b8860b;
+  --ink:#eaf0ff; --muted:#93a3cc; --line:rgba(245,197,66,.18);
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy-900);color:var(--ink);font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:"Impact","Arial Black",system-ui,sans-serif;font-weight:900;letter-spacing:.01em;line-height:1.02;text-transform:uppercase}
+.gold{background:linear-gradient(120deg,var(--gold-3),var(--gold),var(--gold-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+section{padding:96px 0;position:relative}
+.eyebrow{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:700}
+h2{font-size:clamp(2rem,5vw,3.6rem);margin-bottom:18px}
+.lead{color:var(--muted);max-width:60ch;font-size:1.08rem}
+
+/* cursor glow */
+#glow{position:fixed;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(245,197,66,.10),transparent 60%)}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s;padding:14px 0}
+nav.solid{background:rgba(5,11,28,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:Impact,"Arial Black",sans-serif;font-size:1.5rem;letter-spacing:.04em}
+.logo b{color:var(--gold)}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.9rem;color:var(--muted)}
+nav ul a:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font-weight:800;font-size:.92rem;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:inherit}
+.btn.primary{background:linear-gradient(120deg,var(--gold-3),var(--gold),var(--gold-2));color:#1a1200;box-shadow:0 8px 30px rgba(245,197,66,.25)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(245,197,66,.45)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:760px){nav ul{display:none}}
+
+/* hero */
+#hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;
+  background:radial-gradient(1000px 600px at 75% 30%,var(--navy-600),transparent 70%),linear-gradient(180deg,var(--navy-800),var(--navy-900))}
+#court{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+#hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+#hero h1{font-size:clamp(2.6rem,6.4vw,5.2rem);margin-bottom:20px}
+#hero p{color:var(--muted);font-size:1.15rem;max-width:46ch;margin-bottom:30px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hint{margin-top:22px;font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+.hint i{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{transform:scale(1.8);opacity:.3}}
+.game{position:relative;height:460px;border-radius:var(--radius);border:1px solid var(--line);background:rgba(13,28,66,.45);backdrop-filter:blur(4px);overflow:hidden;touch-action:none}
+.game canvas{width:100%;height:100%;display:block;cursor:grab}
+.score{position:absolute;top:14px;left:16px;font-family:Impact,sans-serif;font-size:1.1rem;letter-spacing:.08em}
+.score b{color:var(--gold);font-size:1.6rem}
+.toast{position:absolute;left:50%;top:46px;transform:translateX(-50%);color:var(--gold);font-family:Impact,sans-serif;font-size:1.3rem;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;top:60px}
+@media(max-width:900px){#hero .wrap{grid-template-columns:1fr}.game{height:380px}}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);background:var(--navy-800);overflow:hidden;white-space:nowrap;padding:16px 0}
+.marquee div{display:inline-block;animation:slide 28s linear infinite;font-family:Impact,sans-serif;font-size:1.25rem;letter-spacing:.14em;color:var(--gold)}
+.marquee span{margin:0 26px;color:var(--muted)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.stat{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800))}
+.stat b{display:block;font-family:Impact,sans-serif;font-size:2.8rem;color:var(--gold)}
+.stat small{color:var(--muted)}
+@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+
+/* about / activities */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.list{list-style:none;display:grid;gap:12px}
+.list li{padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:var(--navy-800);transition:.25s;display:flex;gap:12px}
+.list li:hover{transform:translateX(6px);border-color:var(--gold)}
+.list li::before{content:"●";color:var(--gold);font-size:.7rem;margin-top:6px}
+@media(max-width:800px){.cols{grid-template-columns:1fr}}
+
+/* route */
+#italy{background:linear-gradient(180deg,var(--navy-900),var(--navy-800))}
+.route{margin-top:40px;border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:var(--navy-900)}
+.route svg{width:100%;height:auto;display:block}
+.route .arc{stroke:var(--gold);stroke-width:2.5;fill:none;stroke-dasharray:6 8;animation:dash 1.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-28}}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.card{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800));transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 18px 50px rgba(0,0,0,.4)}
+.card h3{font-size:1.4rem;margin-bottom:10px;color:var(--gold)}
+.card p{color:var(--muted);font-size:.96rem}
+@media(max-width:800px){.cards3{grid-template-columns:1fr}}
+
+/* tiers */
+.toggle{display:inline-flex;margin:26px 0 34px;border:1px solid var(--line);border-radius:999px;padding:5px;background:var(--navy-800)}
+.toggle button{border:0;background:none;color:var(--muted);padding:10px 22px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit;font-size:.9rem}
+.toggle button.on{background:linear-gradient(120deg,var(--gold-3),var(--gold));color:#1a1200}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.tier{position:relative;padding:32px 26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800));display:flex;flex-direction:column;transition:.3s}
+.tier:hover{transform:translateY(-8px)}
+.tier.main{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 20px 70px rgba(245,197,66,.18)}
+.badge{position:absolute;top:-13px;left:26px;background:var(--gold);color:#1a1200;font-size:.7rem;font-weight:900;letter-spacing:.14em;padding:5px 12px;border-radius:999px}
+.tier h3{font-size:1.5rem;margin-bottom:6px}
+.price{font-family:Impact,sans-serif;font-size:3rem;color:var(--gold);margin:6px 0 0}
+.per{color:var(--muted);font-size:.85rem;min-height:1.4em}
+.save{color:var(--gold-2);font-weight:700;font-size:.85rem;min-height:1.4em}
+.tier ul{list-style:none;margin:20px 0 26px;display:grid;gap:9px;font-size:.92rem;color:#c9d5f5;flex:1}
+.tier li::before{content:"✓ ";color:var(--gold);font-weight:900}
+.tier .btn{justify-content:center}
+@media(max-width:900px){.tiers{grid-template-columns:1fr}}
+
+/* budget */
+.budget{display:grid;gap:10px;margin-top:34px}
+.bar{display:grid;grid-template-columns:230px 1fr 110px;gap:14px;align-items:center;font-size:.92rem}
+.track{height:14px;border-radius:99px;background:var(--navy-700);overflow:hidden}
+.fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold-3),var(--gold-2));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bar span:last-child{text-align:right;color:var(--muted)}
+.total{margin-top:18px;padding:18px 22px;border:1px solid var(--gold);border-radius:14px;display:flex;justify-content:space-between;font-weight:800}
+@media(max-width:700px){.bar{grid-template-columns:1fr 90px}.bar .track{grid-column:1/-1;order:3}}
+
+/* why / nijmegen */
+.why{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+@media(max-width:800px){.why{grid-template-columns:1fr}}
+
+/* contact */
+#contact{background:radial-gradient(900px 500px at 50% 100%,var(--navy-600),transparent 70%),var(--navy-900);text-align:center}
+#contact h2{font-size:clamp(2.4rem,7vw,5.5rem)}
+form{max-width:560px;margin:34px auto 0;display:grid;gap:12px;text-align:left}
+input,select,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--navy-800);color:var(--ink);font:inherit}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.contacts{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px}
+.contacts a{padding:14px 22px;border:1px solid var(--line);border-radius:999px;color:var(--muted);transition:.25s}
+.contacts a:hover{border-color:var(--gold);color:var(--gold)}
+footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+#thanks{display:none;color:var(--gold);font-weight:800;text-align:center}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="glow"></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#hero" class="logo">FREAKS <b>3x3</b></a>
+    <ul>
+      <li><a href="#about">Community</a></li>
+      <li><a href="#italy">Italy Connection</a></li>
+      <li><a href="#tiers">Sponsorship</a></li>
+      <li><a href="#nijmegen">Nijmegen</a></li>
+    </ul>
+    <a href="#contact" class="btn primary">Become a partner</a>
+  </div>
+</nav>
+
+<header id="hero">
+  <canvas id="court"></canvas>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">3x3 Basketball · Nijmegen × Le Marche</p>
+      <h1>Born in <span class="gold">Italy.</span><br>Built in <span class="gold">Nijmegen.</span></h1>
+      <p>A streetball community with genuine Italian roots, now taking over Dutch courts. One investment. Two countries. One community that is only just getting started.</p>
+      <div class="cta">
+        <a href="#tiers" class="btn primary">See sponsorship tiers →</a>
+        <a href="https://instagram.com/freaks3x3" target="_blank" rel="noopener" class="btn ghost">@freaks3x3</a>
+      </div>
+      <div class="hint"><i></i> Drag the ball back and release to shoot. Beat your high score.</div>
+    </div>
+    <div class="game" id="game">
+      <div class="score">SCORE <b id="score">0</b> · BEST <b id="best">0</b></div>
+      <div class="toast" id="toast">BUCKET!</div>
+      <canvas id="gc"></canvas>
+    </div>
+  </div>
+</header>
+
+<div class="marquee"><div id="mq"></div></div>
+
+<section id="about">
+  <div class="wrap">
+    <p class="eyebrow rv">Who we are</p>
+    <h2 class="rv">The fastest-growing<br>format in <span class="gold">urban basketball</span></h2>
+    <p class="lead rv">Freaks 3x3 is a 3x3 basketball community born in Italy six months ago, now expanding into the Netherlands. We compete in official tournaments, carry our own brand identity and are actively growing around Nijmegen. We bring the streetball spirit to Dutch courts, with genuine Italian roots behind us.</p>
+    <div class="stats rv">
+      <div class="stat"><b data-n="300" data-suf="+">0</b><small>followers gained in under 3 months</small></div>
+      <div class="stat"><b data-n="6">0</b><small>months since we started in Italy</small></div>
+      <div class="stat"><b data-n="2">0</b><small>countries, one community</small></div>
+      <div class="stat"><b data-n="3">0</b><small>sponsorship tiers, founding spots open</small></div>
+    </div>
+    <div class="cols" style="margin-top:56px">
+      <div class="rv">
+        <h3 style="font-size:1.8rem;margin-bottom:18px">What we do</h3>
+        <ul class="list">
+          <li>Official FIBA 3x3 circuit tournaments</li>
+          <li>Regular pick-up games in Nijmegen</li>
+          <li>Cross-border trips: NL players competing in Italian tournaments</li>
+          <li>Active social presence in both countries</li>
+          <li>Building toward the first Freaks 3x3 tournament in the Netherlands</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3 style="font-size:1.8rem;margin-bottom:18px">Where we stand</h3>
+        <ul class="list">
+          <li>Nijmegen is our target city, with a basketball community already forming</li>
+          <li>Already competed in tournaments in official Freaks 3x3 kit</li>
+          <li>Actively recruiting local players and expanding the NL roster</li>
+          <li>Seeking founding partners to grow with from day one</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="italy">
+  <div class="wrap">
+    <p class="eyebrow rv">The Italy connection</p>
+    <h2 class="rv">Your brand <span class="gold">travels</span> with us</h2>
+    <p class="lead rv">No other Dutch sports community is genuinely Italian. Our community was founded in Italy, our network there is active and our players regularly compete on Italian courts. As a sponsor, your brand goes along.</p>
+    <div class="route rv">
+      <svg viewBox="0 0 800 260" aria-label="Route from Nijmegen to Le Marche">
+        <defs><radialGradient id="g"><stop offset="0" stop-color="#f5c542"/><stop offset="1" stop-color="#f5c542" stop-opacity="0"/></radialGradient></defs>
+        <path id="rp" class="arc" d="M170 70 C 330 -10, 520 10, 630 190"/>
+        <circle cx="170" cy="70" r="24" fill="url(#g)"/><circle cx="170" cy="70" r="7" fill="#f5c542"/>
+        <circle cx="630" cy="190" r="24" fill="url(#g)"/><circle cx="630" cy="190" r="7" fill="#f5c542"/>
+        <text x="170" y="115" text-anchor="middle" fill="#eaf0ff" font-family="Impact" font-size="22" letter-spacing="2">NIJMEGEN</text>
+        <text x="630" y="235" text-anchor="middle" fill="#eaf0ff" font-family="Impact" font-size="22" letter-spacing="2">LE MARCHE</text>
+        <text x="400" y="38" text-anchor="middle" fill="#93a3cc" font-size="13" letter-spacing="3">YOUR LOGO IN BOTH</text>
+        <circle r="9" fill="#ffdf7e"><animateMotion dur="3.4s" repeatCount="indefinite"><mpath href="#rp"/></animateMotion></circle>
+      </svg>
+    </div>
+    <div class="cards3">
+      <div class="card rv"><h3>Your brand on Italian courts</h3><p>Our trips include professional 3x3 circuit events with official backdrops, media presence and large audiences.</p></div>
+      <div class="card rv"><h3>Cross-border content</h3><p>Every trip produces matches, cities and culture, shared across our channels in both countries. Settings standard advertising cannot buy.</p></div>
+      <div class="card rv"><h3>Client Italy experience</h3><p>Main Sponsor exclusive: private accommodation, a rental car and guided visits to the coast, the river and the best local restaurants in Le Marche.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tiers">
+  <div class="wrap">
+    <p class="eyebrow rv">Sponsorship 2026</p>
+    <h2 class="rv">Pick your <span class="gold">starting five</span></h2>
+    <p class="lead rv">Two ways to pay on every tier: per 6 months, or the full year upfront with 20% off.</p>
+    <div class="toggle rv" role="tablist">
+      <button id="t6" class="on">Per 6 months</button>
+      <button id="t12">Full year · −20%</button>
+    </div>
+    <div class="tiers">
+      <article class="tier rv" data-a="600" data-b="960">
+        <h3>Community Partner</h3>
+        <div class="price" data-role="p">€600</div><div class="per" data-role="per">per 6 months</div><div class="save" data-role="s"></div>
+        <ul>
+          <li>Logo on all NL training and community kit</li>
+          <li>Presence on all community posts and event announcements</li>
+          <li>Listed as official Community Partner</li>
+          <li>Invitation to all community events</li>
+        </ul>
+        <a href="#contact" class="btn ghost" data-tier="Community Partner">Choose this tier</a>
+      </article>
+      <article class="tier rv" data-a="1800" data-b="2880">
+        <h3>Tournament Sponsor</h3>
+        <div class="price" data-role="p">€1,800</div><div class="per" data-role="per">per 6 months</div><div class="save" data-role="s"></div>
+        <ul>
+          <li>Everything in Community Partner</li>
+          <li>Logo on match kit at all Dutch and Italian tournaments</li>
+          <li>Exposure at Italian 3x3 circuit tournaments</li>
+          <li>Featured in all cross-border content</li>
+          <li>Logo on tournament banners and materials</li>
+          <li>Dedicated social post per tournament</li>
+          <li>Named in press or media coverage</li>
+        </ul>
+        <a href="#contact" class="btn ghost" data-tier="Tournament Sponsor">Choose this tier</a>
+      </article>
+      <article class="tier main rv" data-a="4000" data-b="6400">
+        <span class="badge">EXCLUSIVE · 1 SPOT</span>
+        <h3>Main Sponsor</h3>
+        <div class="price" data-role="p">€4,000</div><div class="per" data-role="per">per 6 months</div><div class="save" data-role="s"></div>
+        <ul>
+          <li>Everything in Tournament Sponsor</li>
+          <li>Naming rights: first Freaks 3x3 NL tournament, presented by your brand</li>
+          <li>Primary logo on all kit, banners, backdrops and digital</li>
+          <li>3–4 dedicated posts per tournament or event</li>
+          <li>No competitor brand at Main Sponsor level</li>
+          <li>Client Italy experience in Le Marche</li>
+          <li>First right of renewal as we scale</li>
+          <li>Permanent founding partner recognition</li>
+        </ul>
+        <a href="#contact" class="btn primary" data-tier="Main Sponsor">Choose this tier</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="invest" style="background:var(--navy-800)">
+  <div class="wrap">
+    <p class="eyebrow rv">Where your investment goes</p>
+    <h2 class="rv">Every euro goes <span class="gold">on the court</span></h2>
+    <p class="lead rv">Real equipment, real setup, real travel. You see exactly what you are building. Estimated costs:</p>
+    <div class="budget rv" id="budget"></div>
+    <div class="total rv"><span>TOTAL ESTIMATE</span><span class="gold">€2,200 – €3,600</span></div>
+  </div>
+</section>
+
+<section id="nijmegen">
+  <div class="wrap">
+    <p class="eyebrow rv">Why Nijmegen</p>
+    <h2 class="rv">Not a blank slate. <span class="gold">A city ready to play.</span></h2>
+    <p class="lead rv">There is already a basketball community in Nijmegen. Freaks 3x3 brings structure, identity and international ambition to players who are ready for it.</p>
+    <div class="why">
+      <div class="card rv"><h3>Why this investment</h3><p>Two markets, one partnership. Real infrastructure and visibility. A standalone Italy experience. Founding status that gets more valuable as the community grows, and the price will reflect that.</p></div>
+      <div class="card rv"><h3>The city</h3><p>Pick-up culture, youth engagement through non-club basketball, Dutch and Italian players side by side, and Nijmegen players competing on Italian courts.</p></div>
+      <div class="card rv" style="grid-column:1/-1"><h3>What we are looking for</h3><p>A permanent or regular court to anchor the community · connections to local businesses interested in cross-border sport · support in accessing municipal sport and community resources.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow rv">Let's build this together</p>
+    <h2 class="rv">Be there from <span class="gold">day one</span></h2>
+    <p class="lead rv" style="margin-inline:auto">Tell us who you are and which tier fits. We'll reply with next steps.</p>
+    <form id="form" class="rv">
+      <input name="name" placeholder="Your name" required>
+      <input name="company" placeholder="Company / brand" required>
+      <input name="email" type="email" placeholder="Email" required>
+      <select name="tier" id="tierSel">
+        <option>Community Partner</option><option>Tournament Sponsor</option><option>Main Sponsor</option><option>Not sure yet</option>
+      </select>
+      <textarea name="msg" rows="3" placeholder="Anything we should know?"></textarea>
+      <button class="btn primary" type="submit" style="justify-content:center">Send inquiry →</button>
+      <p id="thanks">Your email app should now open with the inquiry. Prefer DMs? Find us @freaks3x3.</p>
+    </form>
+    <div class="contacts rv">
+      <a href="https://instagram.com/freaks3x3" target="_blank" rel="noopener">📱 @freaks3x3</a>
+      <a href="tel:+310614395997">📞 Mohamed (NL) +31 061 439 5997</a>
+      <a href="tel:+393887657302">📞 Carlo (IT) +39 388 765 7302</a>
+    </div>
+  </div>
+</section>
+
+<footer>FREAKS 3x3 Netherlands — Nijmegen, 2026 · Born in Italy. Built in the Netherlands. Your brand on both.</footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* cursor glow + nav */
+addEventListener('pointermove',e=>{document.documentElement.style.setProperty('--mx',e.clientX+'px');document.documentElement.style.setProperty('--my',e.clientY+'px')});
+addEventListener('scroll',()=>$('#nav').classList.toggle('solid',scrollY>40),{passive:true});
+
+/* marquee */
+const words=['FREAKS 3x3','NIJMEGEN','LE MARCHE','FIBA 3x3','STREETBALL','TWO COUNTRIES','FOUNDING PARTNERS'];
+$('#mq').innerHTML=(words.map(w=>w+'<span>●</span>').join('')).repeat(4);
+
+/* scroll reveal + counters + budget bars */
+const budget=[['FIBA 3x3 Official Balls (×3)',450,600],['Shot Clock (FIBA compliant)',300,600],['Tournament Backdrop & Banners',200,400],['Court Setup Materials',150,300],['Social Media Advertising',300,500],['NL → Italy Travel (players)',800,1200]];
+$('#budget').innerHTML=budget.map(b=>`<div class="bar"><span>${b[0]}</span><div class="track"><div class="fill" data-w="${b[2]/1200*100}"></div></div><span>€${b[1]} – ${b[2]}</span></div>`).join('');
+function count(el){const n=+el.dataset.n,suf=el.dataset.suf||'';let t0=null;(function f(t){t0??=t;const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(f)})(performance.now())}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('in');
+  t.querySelectorAll('[data-n]').forEach(count);t.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%');io.unobserve(t)}),{threshold:.15});
+$$('.rv').forEach(el=>io.observe(el));
+
+/* pricing toggle */
+const fmt=n=>'€'+n.toLocaleString('en-US');
+function setBilling(yearly){
+  $('#t6').classList.toggle('on',!yearly);$('#t12').classList.toggle('on',yearly);
+  $$('.tier').forEach(t=>{const a=+t.dataset.a,b=+t.dataset.b,p=t.querySelector('[data-role=p]'),from=+p.dataset.v||a,to=yearly?b:a;
+    p.dataset.v=to;let t0=null;(function f(ts){t0??=ts;const k=Math.min((ts-t0)/450,1);p.textContent=fmt(Math.round(from+(to-from)*k));if(k<1)requestAnimationFrame(f)})(performance.now());
+    t.querySelector('[data-role=per]').textContent=yearly?'per year, paid upfront':'per 6 months';
+    t.querySelector('[data-role=s]').textContent=yearly?'Save '+fmt(a*2-b):'';});
+}
+$('#t6').onclick=()=>setBilling(false);$('#t12').onclick=()=>setBilling(true);
+$$('[data-tier]').forEach(a=>a.addEventListener('click',()=>{$('#tierSel').value=a.dataset.tier}));
+
+/* contact form -> mailto (no backend yet) */
+$('#form').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);
+  const body=`Name: ${f.get('name')}\nCompany: ${f.get('company')}\nEmail: ${f.get('email')}\nTier: ${f.get('tier')}\n\n${f.get('msg')}`;
+  location.href='mailto:?subject='+encodeURIComponent('Freaks 3x3 sponsorship inquiry')+'&body='+encodeURIComponent(body);
+  $('#thanks').style.display='block'});
+
+/* hero background: floating court lines + particles */
+const cv=$('#court'),cx=cv.getContext('2d');let W,H,parts=[];
+function size(){W=cv.width=innerWidth;H=cv.height=cv.offsetHeight;parts=Array.from({length:Math.min(70,W/18)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.5,v:Math.random()*.4+.1}))}
+size();addEventListener('resize',size);
+let mx=.5,my=.5;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth;my=e.clientY/innerHeight});
+function bg(){cx.clearRect(0,0,W,H);cx.strokeStyle='rgba(245,197,66,.07)';cx.lineWidth=2;
+  const ox=(mx-.5)*40,oy=(my-.5)*40;
+  cx.beginPath();cx.arc(W*.78+ox,H*.5+oy,H*.34,0,7);cx.stroke();
+  cx.beginPath();cx.arc(W*.78+ox*1.6,H*.5+oy*1.6,H*.16,0,7);cx.stroke();
+  cx.beginPath();cx.moveTo(W*.78+ox,0);cx.lineTo(W*.78+ox,H);cx.stroke();
+  cx.fillStyle='rgba(245,197,66,.55)';parts.forEach(p=>{p.y-=p.v;if(p.y<0)p.y=H;cx.beginPath();cx.arc(p.x+ox*p.r*.3,p.y,p.r,0,7);cx.fill()});
+  if(!reduce)requestAnimationFrame(bg)}
+bg();
+
+/* mini shooting game */
+const gc=$('#gc'),g=gc.getContext('2d'),box=$('#game');let GW,GH;
+function gsize(){const r=box.getBoundingClientRect(),d=devicePixelRatio||1;GW=r.width;GH=r.height;gc.width=GW*d;gc.height=GH*d;g.setTransform(d,0,0,d,0,0);rest()}
+const R=17,G=0.42;let ball,drag=null,score=0,best=+(localStorage.getItem('f3best')||0),scored=false,hoop;
+$('#best').textContent=best;
+function rest(){hoop={x:GW-90,y:GH*.38,w:62};ball={x:70,y:GH-60,vx:0,vy:0,fly:false,pass:false};scored=false}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),900)}
+function pos(e){const r=gc.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+gc.addEventListener('pointerdown',e=>{const p=pos(e);if(!ball.fly&&Math.hypot(p.x-ball.x,p.y-ball.y)<R*2.2){drag=p;gc.setPointerCapture(e.pointerId)}});
+gc.addEventListener('pointermove',e=>{if(drag)drag=pos(e)});
+gc.addEventListener('pointerup',()=>{if(!drag)return;const dx=ball.x-drag.x,dy=ball.y-drag.y;const m=Math.min(Math.hypot(dx,dy),130)/130,a=Math.atan2(dy,dx);
+  ball.vx=Math.cos(a)*m*17;ball.vy=Math.sin(a)*m*17;ball.fly=m>.08;drag=null;scored=false});
+function step(){
+  if(ball.fly){const py=ball.y;ball.vy+=G;ball.x+=ball.vx;ball.y+=ball.vy;
+    // rim ends
+    for(const rx of [hoop.x-hoop.w/2,hoop.x+hoop.w/2]){const dx=ball.x-rx,dy=ball.y-hoop.y,d=Math.hypot(dx,dy);
+      if(d<R+3){const nx=dx/d,ny=dy/d,dot=ball.vx*nx+ball.vy*ny;ball.vx=(ball.vx-2*dot*nx)*.6;ball.vy=(ball.vy-2*dot*ny)*.6;ball.x=rx+nx*(R+3);ball.y=hoop.y+ny*(R+3)}}
+    // backboard
+    if(ball.x+R>hoop.x+hoop.w/2+14&&ball.y>hoop.y-90&&ball.y<hoop.y+10){ball.x=hoop.x+hoop.w/2+14-R;ball.vx*=-.5}
+    // score: crossed rim downward between the ends
+    if(!scored&&py<hoop.y&&ball.y>=hoop.y&&ball.vy>0&&Math.abs(ball.x-hoop.x)<hoop.w/2-6){scored=true;score++;$('#score').textContent=score;toast(score%5===0?'ON FIRE 🔥':'BUCKET!');
+      if(score>best){best=score;$('#best').textContent=best;try{localStorage.setItem('f3best',best)}catch(_){}}}
+    if(ball.y>GH-R){ball.y=GH-R;ball.vy*=-.55;ball.vx*=.8;if(Math.abs(ball.vy)<2){ if(!scored)score=0,$('#score').textContent=0; setTimeout(rest,500);ball.fly=false;ball.vx=ball.vy=0;ball.pass=true}}
+    if(ball.x<R||ball.x>GW-R){ball.vx*=-.7;ball.x=Math.max(R,Math.min(GW-R,ball.x))}}
+}
+function draw(){
+  g.clearRect(0,0,GW,GH);
+  // floor
+  g.fillStyle='rgba(245,197,66,.08)';g.fillRect(0,GH-6,GW,6);
+  // backboard + rim + net
+  const bx=hoop.x+hoop.w/2+14;g.fillStyle='#eaf0ff';g.fillRect(bx,hoop.y-80,6,90);
+  g.strokeStyle='#ff9d3c';g.lineWidth=4;g.beginPath();g.moveTo(hoop.x-hoop.w/2,hoop.y);g.lineTo(hoop.x+hoop.w/2,hoop.y);g.stroke();
+  g.strokeStyle='rgba(234,240,255,.55)';g.lineWidth=1.2;for(let i=0;i<=6;i++){const x=hoop.x-hoop.w/2+i*hoop.w/6;g.beginPath();g.moveTo(x,hoop.y);g.lineTo(hoop.x-hoop.w/3+i*hoop.w/9,hoop.y+34);g.stroke()}
+  // aim line
+  if(drag){const dx=ball.x-drag.x,dy=ball.y-drag.y,m=Math.min(Math.hypot(dx,dy),130)/130,a=Math.atan2(dy,dx);
+    let x=ball.x,y=ball.y,vx=Math.cos(a)*m*17,vy=Math.sin(a)*m*17;g.fillStyle='rgba(245,197,66,.7)';
+    for(let i=0;i<28;i++){vy+=G;x+=vx;y+=vy;if(i%2==0){g.beginPath();g.arc(x,y,2.4,0,7);g.fill()}}}
+  // ball
+  g.save();g.translate(ball.x,ball.y);g.rotate(ball.x*.03);
+  const gr=g.createRadialGradient(-5,-6,2,0,0,R);gr.addColorStop(0,'#ffdf7e');gr.addColorStop(1,'#d9961c');
+  g.fillStyle=gr;g.beginPath();g.arc(0,0,R,0,7);g.fill();g.strokeStyle='#5a3a00';g.lineWidth=1.6;
+  g.beginPath();g.arc(0,0,R,0,7);g.moveTo(-R,0);g.lineTo(R,0);g.moveTo(0,-R);g.lineTo(0,R);g.moveTo(-R*.7,-R*.7);g.quadraticCurveTo(0,0,-R*.7,R*.7);g.moveTo(R*.7,-R*.7);g.quadraticCurveTo(0,0,R*.7,R*.7);g.stroke();
+  g.restore();
+}
+function loop(){step();draw();requestAnimationFrame(loop)}
+gsize();addEventListener('resize',gsize);loop();
+})();
+</script>
+</body>
+</html>
