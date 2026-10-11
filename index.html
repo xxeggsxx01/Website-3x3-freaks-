@@ -153,6 +153,13 @@ nav ul .m-only{display:none}
 .list li:hover{border-color:rgba(245,197,66,.45)}
 .list li::before{content:"●";color:var(--gold);font-size:.7rem;margin-top:6px}
 @media(max-width:860px){.proof,.cols{grid-template-columns:1fr}.proof .photo{aspect-ratio:4/4.4}}
+.people{margin-top:56px}
+.people>h3{font-size:1.9rem;margin-bottom:18px}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:760px}
+.person{padding:14px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800))}
+.person .photo{aspect-ratio:4/5;margin-bottom:14px;border-radius:12px}
+.person h4{font-family:var(--display);font-weight:400;font-size:1.35rem;letter-spacing:.03em;text-transform:uppercase}
+.person p{color:var(--muted);font-size:.86rem}
 
 /* italy */
 #italy{background:linear-gradient(180deg,var(--navy-900),var(--navy-800))}
@@ -322,6 +329,20 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
       </div>
     </div>
 
+    <div class="people">
+      <h3 class="rv" data-i18n="pp.h">The people</h3>
+      <div class="pgrid">
+        <div class="person rv">
+          <figure class="photo"><img src="assets/nicola.webp" alt="Nicola Paradisi in a yellow Freaks 3x3 jersey on court at a 3x3 event in Italy" loading="lazy" width="1280" height="1600"></figure>
+          <h4>Nicola Paradisi</h4><p data-i18n="pp.r1">Founder &amp; CEO · Italy</p>
+        </div>
+        <div class="person rv">
+          <figure class="photo"><img src="assets/mohamed.webp" alt="Mohamed Carlo Sow in a yellow shirt playing indoor basketball" loading="lazy" width="900" height="1125"></figure>
+          <h4>Mohamed Carlo Sow</h4><p data-i18n="pp.r2">Netherlands lead · Nijmegen</p>
+        </div>
+      </div>
+    </div>
+
     <div class="cols">
       <div class="rv">
         <h3 data-i18n="about.h3a">What we do</h3>
@@ -356,9 +377,9 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
         <h2 class="rv" data-i18n="it.h2">Your brand <span class="gold">travels</span> with us</h2>
         <p class="lead rv" data-i18n="it.p">We're not a Dutch club with an Italian name. We were founded in Italy, our network there is active and our players compete on Italian courts. As a sponsor, your brand comes along.</p>
       </div>
-      <figure class="photo rv">
-        <img src="assets/italy-player.webp" alt="Nicola Paradisi, founder and CEO of Freaks 3x3, in a yellow Freaks jersey on court at a 3x3 event in Italy" loading="lazy" width="1100" height="1375">
-        <figcaption data-i18n="it.cap">🇮🇹 Nicola Paradisi, founder &amp; CEO, on court in Italy</figcaption>
+      <figure class="photo rv" style="aspect-ratio:5/4">
+        <img src="assets/le-marche.webp" alt="The Conero coast in Le Marche, Italy: a white beach below green cliffs and a turquoise sea" loading="lazy" width="600" height="480">
+        <figcaption data-i18n="it.cap">🇮🇹 Le Marche, the Conero coast: where we host our Main Sponsor</figcaption>
       </figure>
     </div>
     <div class="route rv">
@@ -548,7 +569,10 @@ const T={
  'it.eye':['De Italië-connectie','La connessione italiana'],
  'it.h2':['Jouw merk <span class="gold">reist</span> met ons mee','Il tuo brand <span class="gold">viaggia</span> con noi'],
  'it.p':['We zijn geen Nederlandse club met een Italiaanse naam. We zijn opgericht in Italië, ons netwerk daar is actief en onze spelers spelen op Italiaanse courts. Als sponsor gaat jouw merk mee.','Non siamo un club olandese con un nome italiano. Siamo nati in Italia, la nostra rete lì è attiva e i nostri giocatori giocano sui campi italiani. Come sponsor, il tuo brand viene con noi.'],
- 'it.cap':['🇮🇹 Nicola Paradisi, oprichter &amp; CEO, op de court in Italië','🇮🇹 Nicola Paradisi, fondatore e CEO, in campo in Italia'],
+ 'it.cap':['🇮🇹 Le Marche, de Conero-kust: hier ontvangen we onze Main Sponsor','🇮🇹 Le Marche, la costa del Conero: qui ospitiamo il nostro Main Sponsor'],
+ 'pp.h':['De mensen','Le persone'],
+ 'pp.r1':['Oprichter &amp; CEO · Italië','Fondatore e CEO · Italia'],
+ 'pp.r2':['Teamleider Nederland · Nijmegen','Responsabile Paesi Bassi · Nijmegen'],
  'it.svg':['JOUW LOGO IN BEIDE','IL TUO LOGO IN ENTRAMBI'],
  'it.c1h':['Jouw logo op Italiaanse courts','Il tuo logo sui campi italiani'],
  'it.c1p':['We spelen 3x3-circuitevents in Italië. Jouw logo speelt mee: op ons tenue en in elke foto en video die we mee naar huis nemen.','Giochiamo eventi del circuito 3x3 in Italia. Il tuo logo gioca con noi: sulla divisa e in ogni foto e video che portiamo a casa.'],
