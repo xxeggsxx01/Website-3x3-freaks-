@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Freaks Family — Freaks 3x3</title>
+<meta name="description" content="Meet the Freaks 3x3 family: the players, founders and newcomers behind the community in Italy and the Netherlands. Open to players from every country.">
+<meta name="theme-color" content="#050b1c">
+<meta property="og:title" content="The Freaks Family — Freaks 3x3">
+<meta property="og:description" content="The players behind Freaks 3x3. Open to players from every country.">
+<meta property="og:image" content="assets/og.jpg">
+<link rel="icon" type="image/png" href="assets/icon-64.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-900:#050b1c; --navy-800:#08122b; --navy-700:#0d1c42; --navy-600:#14295e;
+  --gold:#f5c542; --gold-2:#ffdf7e; --gold-3:#b8860b;
+  --ink:#eaf0ff; --muted:#93a3cc; --line:rgba(245,197,66,.18);
+  --radius:18px;
+  --display:"Anton","Impact","Arial Black",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--navy-900);color:var(--ink);font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.015em;line-height:1.02;text-transform:uppercase}
+.gold{background:linear-gradient(120deg,var(--gold-3),var(--gold),var(--gold-2),var(--gold));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s ease-in-out infinite}
+@keyframes sheen{50%{background-position:100% 0}}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+section{padding:80px 0;position:relative}
+.eyebrow{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:800}
+h2{font-size:clamp(2rem,5vw,3.4rem);margin-bottom:16px}
+.lead{color:var(--muted);max-width:62ch;font-size:1.08rem}
+#glow{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(245,197,66,.09),transparent 60%)}
+
+/* nav (same as home) */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:12px 0;background:rgba(5,11,28,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.5rem;letter-spacing:.05em}
+.logo b{color:var(--gold);font-weight:400}
+.logo img{height:38px;width:auto}
+nav ul{display:flex;gap:24px;list-style:none;font-size:.9rem;color:var(--muted)}
+nav ul a:hover,nav ul a.act{color:var(--gold)}
+nav ul .m-only{display:none}
+.right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:rgba(8,18,43,.7)}
+.lang button{border:0;background:none;color:var(--muted);font-family:inherit;font-weight:800;font-size:.72rem;padding:7px 9px;border-radius:999px;cursor:pointer;letter-spacing:.06em}
+.lang button.on{background:var(--gold);color:#1a1200}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:12px;width:44px;height:44px;cursor:pointer;color:var(--ink);font-size:1.2rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;min-height:44px;border-radius:999px;font-weight:800;font-size:.92rem;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s,color .2s;font-family:inherit}
+.btn.primary{background:linear-gradient(120deg,var(--gold-3),var(--gold),var(--gold-2));color:#1a1200;box-shadow:0 8px 30px rgba(245,197,66,.25)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(245,197,66,.45)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:900px){
+  nav ul{position:fixed;top:70px;left:16px;right:16px;flex-direction:column;gap:0;background:rgba(8,18,43,.97);border:1px solid var(--line);border-radius:16px;padding:8px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:.25s}
+  nav ul.open{transform:none;opacity:1;pointer-events:auto}
+  nav ul a{display:block;padding:14px 12px;font-size:1rem}
+  nav ul .m-only{display:block}
+  .burger{display:block}
+  .right .btn{display:none}
+  .lang button{min-width:40px;min-height:40px}
+  .logo span{display:none}
+}
+
+/* hero */
+.hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;padding:140px 0 70px;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;transform:scale(1.06);animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{to{transform:scale(1.12) translateY(-1.5%)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,11,28,.35) 0%,rgba(5,11,28,.55) 45%,var(--navy-900) 100%)}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{font-size:clamp(3rem,9vw,7rem);margin-bottom:16px}
+.hero p{color:#c9d5f5;font-size:1.15rem;max-width:52ch;margin-bottom:26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* counters */
+.counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:-30px;position:relative;z-index:3}
+.count{padding:20px 22px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800))}
+.count b{display:block;font-family:var(--display);font-weight:400;font-size:2.4rem;color:var(--gold);line-height:1.1}
+.count small{color:var(--muted)}
+@media(max-width:700px){.counts{grid-template-columns:1fr 1fr}}
+
+/* spotlight */
+.spot{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:center;border:1px solid var(--gold);border-radius:24px;padding:22px;background:radial-gradient(500px 300px at 80% 20%,rgba(245,197,66,.10),transparent),linear-gradient(160deg,var(--navy-700),var(--navy-800));box-shadow:0 20px 70px rgba(245,197,66,.12)}
+.spot .ph{border-radius:16px;overflow:hidden;aspect-ratio:4/5}
+.spot .ph img{width:100%;height:100%;object-fit:cover}
+.spot h3{font-size:clamp(2rem,4.4vw,3.2rem);margin:8px 0 6px}
+.spot .role{color:var(--gold-2);font-weight:700;margin-bottom:16px}
+.spot blockquote{font-size:1.2rem;border-left:3px solid var(--gold);padding-left:16px;margin:18px 0;color:var(--ink)}
+.spot p{color:var(--muted)}
+@media(max-width:800px){.spot{grid-template-columns:1fr}}
+
+/* filters + grid */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 28px}
+.filters button{border:1px solid var(--line);background:var(--navy-800);color:var(--muted);border-radius:999px;padding:10px 18px;min-height:44px;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer;transition:.2s}
+.filters button.on{background:var(--gold);border-color:var(--gold);color:#1a1200}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.m{perspective:1200px;cursor:pointer;outline:none}
+.m .in{position:relative;aspect-ratio:3/4.2;transition:transform .7s cubic-bezier(.3,.7,.2,1);transform-style:preserve-3d}
+.m.f .in{transform:rotateY(180deg)}
+.m:focus-visible .in{box-shadow:0 0 0 3px var(--gold);border-radius:var(--radius)}
+.side{position:absolute;inset:0;border-radius:var(--radius);overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid var(--line);background:linear-gradient(160deg,var(--navy-700),var(--navy-800))}
+.front img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.m:hover .front img{transform:scale(1.05)}
+.front::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(5,11,28,.92))}
+.front .txt{position:absolute;left:16px;right:16px;bottom:16px;z-index:1}
+.front h3{font-size:1.6rem}
+.front .r{color:var(--gold-2);font-size:.85rem;font-weight:700}
+.tag{position:absolute;top:12px;left:12px;z-index:1;font-size:.68rem;font-weight:900;letter-spacing:.12em;padding:5px 10px;border-radius:999px;background:rgba(5,11,28,.8);border:1px solid var(--line);color:var(--ink)}
+.tag.new{background:var(--gold);color:#1a1200;border-color:var(--gold)}
+.hint{position:absolute;top:12px;right:12px;z-index:1;font-size:.7rem;color:var(--muted);background:rgba(5,11,28,.7);border-radius:999px;padding:4px 9px}
+.back{transform:rotateY(180deg);padding:22px;display:flex;flex-direction:column}
+.back h3{font-size:1.5rem;color:var(--gold)}
+.back .r{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+.back dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:.88rem;margin-bottom:12px}
+.back dt{color:var(--muted)}
+.back p{font-size:.92rem;color:#c9d5f5;flex:1;overflow:auto}
+.back a{color:var(--gold);font-weight:700;font-size:.88rem;margin-top:10px}
+/* "you?" card */
+.you .front{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;border:2px dashed rgba(245,197,66,.45);background:radial-gradient(300px 200px at 50% 30%,rgba(245,197,66,.12),transparent),var(--navy-800)}
+.you .front::after{display:none}
+.you .front img{width:96px;height:auto;opacity:.9;margin-bottom:16px}
+.you .front h3{font-size:1.9rem;margin-bottom:8px}
+.you .front p{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.empty{grid-column:1/-1;color:var(--muted);padding:26px;border:1px dashed var(--line);border-radius:var(--radius);text-align:center}
+
+/* join */
+.join{text-align:center;background:radial-gradient(900px 500px at 50% 100%,var(--navy-600),transparent 70%),var(--navy-900)}
+.join h2{font-size:clamp(2.4rem,7vw,5rem)}
+.join .lead{margin:0 auto 28px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:0 auto 32px;text-align:left}
+.step{padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--navy-800)}
+.step b{font-family:var(--display);font-weight:400;font-size:2rem;color:var(--gold)}
+.step p{color:var(--muted);font-size:.92rem}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="glow"></div>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="Freaks 3x3 home">
+      <img src="assets/logo-gold.png" alt="" width="776" height="1014">
+      <span>FREAKS <b>3x3</b></span>
+    </a>
+    <ul id="menu">
+      <li><a href="index.html#about" data-i18n="nav.about">Community</a></li>
+      <li><a href="family.html" class="act" data-i18n="nav.family">Family</a></li>
+      <li><a href="index.html#kit" data-i18n="nav.kit">Kit</a></li>
+      <li><a href="index.html#tiers" data-i18n="nav.tiers">Sponsorship</a></li>
+      <li class="m-only"><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="on">EN</button><button data-lang="nl">NL</button><button data-lang="it">IT</button>
+      </div>
+      <a href="#join" class="btn primary" data-i18n="nav.join">Join the family</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <img class="bg" src="assets/team-win.webp" alt="The Freaks 3x3 family celebrating the Nijmegen city tournament win" width="1050" height="1400">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="h.eye">The Freaks family</p>
+    <h1 data-i18n="h.h1">More than <span class="gold">a team.</span></h1>
+    <p data-i18n="h.p">The players, founders and newcomers behind Freaks 3x3. Born in Italy, playing in Nijmegen, open to players from every country.</p>
+    <div class="cta">
+      <a href="#roster" class="btn primary" data-i18n="h.cta">Meet the family ↓</a>
+      <a href="#join" class="btn ghost" data-i18n="h.cta2">Want to play with us?</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap counts">
+  <div class="count rv"><b id="cMembers">0</b><small data-i18n="c.1">family members on this page</small></div>
+  <div class="count rv" id="cNewCard" hidden><b id="cNew">0</b><small data-i18n="c.2">newcomers this season</small></div>
+  <div class="count rv"><b>2</b><small data-i18n="c.3">countries today, open to the world</small></div>
+</div>
+
+<section id="spotlight" hidden>
+  <div class="wrap">
+    <p class="eyebrow rv" data-i18n="s.eye">Newcomer spotlight</p>
+    <div class="spot rv" id="spot"></div>
+  </div>
+</section>
+
+<section id="roster">
+  <div class="wrap">
+    <p class="eyebrow rv" data-i18n="r.eye">The roster</p>
+    <h2 class="rv" data-i18n="r.h2">Who are <span class="gold">the Freaks?</span></h2>
+    <p class="lead rv" data-i18n="r.p">Tap a card to flip it and get to know the person behind the jersey.</p>
+    <div class="filters rv" role="group" aria-label="Filter">
+      <button data-f="all" class="on" data-i18n="f.all">Everyone</button>
+      <button data-f="new" data-i18n="f.new">Newcomers</button>
+      <button data-f="IT" data-i18n="f.it">🇮🇹 Italy</button>
+      <button data-f="NL" data-i18n="f.nl">🇳🇱 Netherlands</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="join" class="join">
+  <div class="wrap">
+    <p class="eyebrow rv" data-i18n="j.eye">Join the family</p>
+    <h2 class="rv" data-i18n="j.h2">Your face <span class="gold">on this page</span></h2>
+    <p class="lead rv" data-i18n="j.p">Every level, every country. If you love the game, there's a place for you at Freaks 3x3.</p>
+    <div class="steps">
+      <div class="step rv"><b>01</b><p data-i18n="j.s1">Message us on WhatsApp or Instagram.</p></div>
+      <div class="step rv"><b>02</b><p data-i18n="j.s2">Come to a pick-up game in Nijmegen, or meet us in Italy.</p></div>
+      <div class="step rv"><b>03</b><p data-i18n="j.s3">Play, wear the Joker, and get your own card on this page.</p></div>
+    </div>
+    <div class="cta rv" style="justify-content:center">
+      <a class="btn primary" id="waJoin" href="https://wa.me/31614395997" target="_blank" rel="noopener" data-i18n="j.wa">💬 Message us on WhatsApp</a>
+      <a class="btn ghost" href="https://instagram.com/freaks3x3" target="_blank" rel="noopener">📱 @freaks3x3</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="assets/logo-gold.png" alt="" loading="lazy" width="776" height="1014">
+  <span data-i18n="foot">Freaks 3x3 · Born in Italy. Building Worldwide. Open to every player.</span>
+</footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+
+/* =====================================================================
+   THE FAMILY — add a person by copying one block below.
+   - base: 'IT' or 'NL' (where they play now)
+   - newcomer: true shows the NEW badge and puts them under "Newcomers"
+   - spotlight: true features them in the big card at the top (one at a time)
+   - text fields take {en, nl, it}; leave a language out and English is used
+   - photo: put the file in assets/ (portrait works best)
+   ===================================================================== */
+const FAMILY=[
+  { name:'Nicola Paradisi', photo:'assets/nicola.webp', base:'IT',
+    role:{en:'Founder & CEO',nl:'Oprichter & CEO',it:'Fondatore e CEO'},
+    bio:{en:'Founded Freaks 3x3 in Italy and built the network that now reaches Nijmegen.',
+         nl:'Richtte Freaks 3x3 op in Italië en bouwde het netwerk dat nu tot in Nijmegen reikt.',
+         it:'Ha fondato Freaks 3x3 in Italia e ha costruito la rete che oggi arriva fino a Nijmegen.'} },
+  { name:'Mohamed Carlo Sow', photo:'assets/mohamed.webp', base:'NL', since:'2026',
+    role:{en:'Netherlands lead · Nijmegen',nl:'Teamleider Nederland · Nijmegen',it:'Responsabile Paesi Bassi · Nijmegen'},
+    bio:{en:'Leads the Freaks 3x3 chapter in Nijmegen: pick-up games, the local roster, and the run to the Amsterdam Finals.',
+         nl:'Leidt het Freaks 3x3-team in Nijmegen: pick-up games, de lokale selectie en de weg naar de finale in Amsterdam.',
+         it:'Guida il gruppo Freaks 3x3 a Nijmegen: partite pick-up, il roster locale e la corsa verso le finali di Amsterdam.'} },
+  // { name:'First Last', photo:'assets/first.webp', base:'NL', since:'2026', newcomer:true, spotlight:true,
+  //   from:'🇵🇱 Poland', position:{en:'Guard',nl:'Guard',it:'Guardia'},
+  //   role:{en:'Player'}, quote:{en:'One short line in their own words.'},
+  //   bio:{en:'Two or three sentences: who they are, how they found Freaks.'}, ig:'username' },
+];
+
+/* ---------- UI strings: [nl, it]; English lives in the HTML ---------- */
+const T={
+ 'nav.about':['Community','Community'],'nav.family':['Familie','Famiglia'],'nav.kit':['Tenue','Divisa'],
+ 'nav.tiers':['Sponsoring','Sponsorizzazioni'],'nav.contact':['Contact','Contatti'],'nav.join':['Word lid','Unisciti'],
+ 'h.eye':['De Freaks-familie','La famiglia Freaks'],
+ 'h.h1':['Meer dan <span class="gold">een team.</span>','Più di <span class="gold">una squadra.</span>'],
+ 'h.p':['De spelers, oprichters en nieuwkomers achter Freaks 3x3. Geboren in Italië, spelend in Nijmegen, open voor spelers uit elk land.','I giocatori, i fondatori e i nuovi arrivati dietro Freaks 3x3. Nati in Italia, in campo a Nijmegen, aperti a giocatori di ogni paese.'],
+ 'h.cta':['Maak kennis ↓','Conosci la famiglia ↓'],'h.cta2':['Wil je met ons spelen?','Vuoi giocare con noi?'],
+ 'c.1':['familieleden op deze pagina','membri della famiglia su questa pagina'],'c.2':['nieuwkomers dit seizoen','nuovi arrivati in questa stagione'],
+ 'c.3':['landen vandaag, open voor de wereld','paesi oggi, aperti al mondo'],
+ 's.eye':['Nieuwkomer in de spotlight','Nuovo arrivo in primo piano'],
+ 'r.eye':['De selectie','Il roster'],'r.h2':['Wie zijn <span class="gold">de Freaks?</span>','Chi sono <span class="gold">i Freaks?</span>'],
+ 'r.p':['Tik op een kaart om hem om te draaien en leer de persoon achter het shirt kennen.','Tocca una card per girarla e conoscere la persona dietro la maglia.'],
+ 'f.all':['Iedereen','Tutti'],'f.new':['Nieuwkomers','Nuovi arrivi'],'f.it':['🇮🇹 Italië','🇮🇹 Italia'],'f.nl':['🇳🇱 Nederland','🇳🇱 Paesi Bassi'],
+ 'j.eye':['Word lid van de familie','Unisciti alla famiglia'],
+ 'j.h2':['Jouw gezicht <span class="gold">op deze pagina</span>','La tua faccia <span class="gold">su questa pagina</span>'],
+ 'j.p':['Elk niveau, elk land. Als je van het spel houdt, is er bij Freaks 3x3 een plek voor jou.','Ogni livello, ogni paese. Se ami il gioco, a Freaks 3x3 c’è posto per te.'],
+ 'j.s1':['Stuur ons een bericht via WhatsApp of Instagram.','Scrivici su WhatsApp o Instagram.'],
+ 'j.s2':['Kom naar een pick-up game in Nijmegen, of ontmoet ons in Italië.','Vieni a una partita pick-up a Nijmegen, o incontraci in Italia.'],
+ 'j.s3':['Speel, draag de Joker en krijg je eigen kaart op deze pagina.','Gioca, indossa il Joker e ottieni la tua card su questa pagina.'],
+ 'j.wa':['💬 Stuur ons een WhatsApp','💬 Scrivici su WhatsApp'],
+ 'foot':['Freaks 3x3 · Geboren in Italië. Groeien wereldwijd. Open voor elke speler.','Freaks 3x3 · Nati in Italia. Cresciamo nel mondo. Aperti a ogni giocatore.'],
+ // JS-only
+ 'new':['NIEUW','NUOVO'],'flip':['Tik ↻','Tocca ↻'],'base.IT':['🇮🇹 Italië','🇮🇹 Italia'],'base.NL':['🇳🇱 Nederland','🇳🇱 Paesi Bassi'],
+ 'l.base':['Speelt in','Gioca in'],'l.from':['Uit','Da'],'l.pos':['Positie','Ruolo'],'l.since':['Sinds','Dal'],
+ 'you.h':['Jij?','Tu?'],'you.p':['Er is plek voor spelers uit elk land.','C’è posto per giocatori di ogni paese.'],'you.b':['Word lid →','Unisciti →'],
+ 'empty.new':['Onze volgende nieuwkomers worden binnenkort voorgesteld. Wil jij er een zijn?','I prossimi nuovi arrivi saranno presentati a breve. Vuoi essere uno di loro?'],
+ 'empty':['Nog niemand hier. Binnenkort meer.','Ancora nessuno qui. Presto altri.'],
+ 'wa':['Hoi! Ik wil graag met Freaks 3x3 spelen.','Ciao! Vorrei giocare con Freaks 3x3.'],
+};
+const EN={'new':'NEW','flip':'Tap ↻','base.IT':'🇮🇹 Italy','base.NL':'🇳🇱 Netherlands','l.base':'Plays in','l.from':'From','l.pos':'Position','l.since':'Since',
+ 'you.h':'You?','you.p':'There’s a place for players from every country.','you.b':'Join us →',
+ 'empty.new':'Our next newcomers are being introduced soon. Want to be one of them?','empty':'Nobody here yet. More soon.',
+ 'wa':"Hi! I'd like to play with Freaks 3x3."};
+let lang='en';const LI={en:-1,nl:0,it:1};
+const orig=new Map();$$('[data-i18n]').forEach(e=>orig.set(e,e.innerHTML));
+const t=k=>lang==='en'?(EN[k]??k):(T[k]?.[LI[lang]]??EN[k]??k);
+const tx=o=>!o?'':typeof o==='string'?o:(o[lang]??o.en??'');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- render ---------- */
+let filter='all';
+function card(m,i){
+  const rows=[[t('l.base'),t('base.'+m.base)],m.from&&[t('l.from'),esc(m.from)],m.position&&[t('l.pos'),esc(tx(m.position))],m.since&&[t('l.since'),esc(m.since)]].filter(Boolean);
+  return `<div class="m rv" tabindex="0" role="button" aria-label="${esc(m.name)}">
+  <div class="in">
+    <div class="side front">${m.newcomer?`<span class="tag new">${t('new')}</span>`:`<span class="tag">${t('base.'+m.base)}</span>`}<span class="hint">${t('flip')}</span>
+      <img src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy">
+      <div class="txt"><h3>${esc(m.name)}</h3><div class="r">${esc(tx(m.role))}</div></div></div>
+    <div class="side back"><h3>${esc(m.name)}</h3><div class="r">${esc(tx(m.role))}</div>
+      <dl>${rows.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')}</dl>
+      ${m.quote?`<p><em>“${esc(tx(m.quote))}”</em></p>`:''}<p>${esc(tx(m.bio))}</p>
+      ${m.ig?`<a href="https://instagram.com/${esc(m.ig)}" target="_blank" rel="noopener">@${esc(m.ig)}</a>`:''}</div>
+  </div></div>`;
+}
+function youCard(){return `<a class="m you rv" href="#join"><div class="in"><div class="side front">
+  <img src="assets/logo-gold.png" alt=""><h3>${t('you.h')}</h3><p>${t('you.p')}</p><span class="btn primary">${t('you.b')}</span></div></div></a>`}
+function render(){
+  const list=FAMILY.filter(m=>filter==='all'||(filter==='new'?m.newcomer:m.base===filter));
+  $('#grid').innerHTML=(list.length?list.map(card).join(''):`<div class="empty">${t(filter==='new'?'empty.new':'empty')}</div>`)+youCard();
+  $$('#grid .m:not(.you)').forEach(el=>{const flip=()=>el.classList.toggle('f');el.onclick=flip;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}}});
+  $$('#grid .rv').forEach((el,i)=>{el.style.transitionDelay=Math.min(i*60,360)+'ms';io.observe(el)});
+  // spotlight
+  const s=FAMILY.find(m=>m.spotlight);$('#spotlight').hidden=!s;
+  if(s)$('#spot').innerHTML=`<div class="ph"><img src="${esc(s.photo)}" alt="${esc(s.name)}"></div><div>
+    <span class="tag new" style="position:static;display:inline-block">${t('new')}</span><h3>${esc(s.name)}</h3><div class="role">${esc(tx(s.role))} · ${t('base.'+s.base)}</div>
+    ${s.quote?`<blockquote>“${esc(tx(s.quote))}”</blockquote>`:''}<p>${esc(tx(s.bio))}</p></div>`;
+  $('#cMembers').textContent=FAMILY.length;const nNew=FAMILY.filter(m=>m.newcomer).length;$('#cNew').textContent=nNew;$('#cNewCard').hidden=!nNew;
+  $('#waJoin').href='https://wa.me/31614395997?text='+encodeURIComponent(t('wa'));
+}
+$$('.filters button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;$$('.filters button').forEach(x=>x.classList.toggle('on',x===b));render()});
+
+/* ---------- language (shared with the home page) ---------- */
+function setLang(l){
+  lang=l;document.documentElement.lang=l;
+  $$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  $$('[data-i18n]').forEach(e=>{e.innerHTML=l==='en'?orig.get(e):(T[e.dataset.i18n]?.[LI[l]]??orig.get(e))});
+  render();try{localStorage.setItem('f3lang',l)}catch(_){}
+}
+$$('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+
+/* ---------- misc ---------- */
+addEventListener('pointermove',e=>{const s=document.documentElement.style;s.setProperty('--mx',e.clientX+'px');s.setProperty('--my',e.clientY+'px')});
+$('#burger').onclick=()=>{const o=$('#menu').classList.toggle('open');$('#burger').setAttribute('aria-expanded',o)};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+$$('.rv').forEach(el=>io.observe(el));
+
+let start='en';try{start=localStorage.getItem('f3lang')||''}catch(_){}
+if(!start){const n=(navigator.language||'').slice(0,2);start=LI[n]!==undefined?n:'en'}
+start!=='en'?setLang(start):render();
+})();
+</script>
+</body>
+</html>
