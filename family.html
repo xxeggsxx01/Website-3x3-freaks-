@@ -11,9 +11,7 @@
 <meta property="og:image" content="assets/og.jpg">
 <link rel="icon" type="image/png" href="assets/icon-64.png">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
 :root{
   --navy-900:#050b1c; --navy-800:#08122b; --navy-700:#0d1c42; --navy-600:#14295e;
@@ -112,7 +110,9 @@ nav ul .m-only{display:none}
 .front .r{color:var(--gold-2);font-size:.85rem;font-weight:700}
 .tag{position:absolute;top:12px;left:12px;z-index:1;font-size:.68rem;font-weight:900;letter-spacing:.12em;padding:5px 10px;border-radius:999px;background:rgba(5,11,28,.8);border:1px solid var(--line);color:var(--ink)}
 .tag.new{background:var(--gold);color:#1a1200;border-color:var(--gold)}
-.hint{position:absolute;top:12px;right:12px;z-index:1;font-size:.7rem;color:var(--muted);background:rgba(5,11,28,.7);border-radius:999px;padding:4px 9px}
+.flipb{position:absolute;top:10px;right:10px;z-index:2;font:inherit;font-size:.78rem;font-weight:800;color:var(--ink);background:rgba(5,11,28,.82);border:1px solid var(--line);border-radius:999px;padding:8px 14px;min-height:36px;cursor:pointer}
+.flipb:hover{border-color:var(--gold);color:var(--gold)}
+.back .flipb{position:static;align-self:flex-start;margin-top:12px}
 .back{transform:rotateY(180deg);padding:22px;display:flex;flex-direction:column}
 .back h3{font-size:1.5rem;color:var(--gold)}
 .back .r{color:var(--muted);font-size:.85rem;margin-bottom:12px}
@@ -142,10 +142,18 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
 .rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
 .rv.in{opacity:1;transform:none}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-80px;z-index:100;background:var(--gold);color:#1a1200;padding:12px 18px;border-radius:10px;font-weight:800}
+.skip:focus{top:12px}
+footer .biz{margin-top:10px}
+footer nav.legal{position:static;z-index:auto;padding:0;background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;transition:none}
+footer .legal{display:flex;gap:6px 20px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+footer .legal a,footer .biz a{color:var(--ink);text-decoration:underline;display:inline-flex;align-items:center;min-height:44px}
+mark.todo{background:#ff5a3c;color:#000;padding:0 5px;border-radius:4px;font-weight:700}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="glow"></div>
 
 <nav>
@@ -163,14 +171,15 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
     </ul>
     <div class="right">
       <div class="lang" role="group" aria-label="Language">
-        <button data-lang="en" class="on">EN</button><button data-lang="nl">NL</button><button data-lang="it">IT</button>
+        <button data-lang="en" class="on" aria-pressed="true" aria-label="EN, English">EN</button><button data-lang="nl" aria-pressed="false" aria-label="NL, Nederlands">NL</button><button data-lang="it" aria-pressed="false" aria-label="IT, Italiano">IT</button>
       </div>
       <a href="#join" class="btn primary" data-i18n="nav.join">Join the family</a>
-      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">☰</button>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">☰</button>
     </div>
   </div>
 </nav>
 
+<main id="main">
 <header class="hero">
   <img class="bg" src="assets/team-win.webp" alt="The Freaks 3x3 family celebrating the Nijmegen city tournament win" width="1050" height="1400">
   <div class="wrap">
@@ -201,12 +210,12 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
   <div class="wrap">
     <p class="eyebrow rv" data-i18n="r.eye">The roster</p>
     <h2 class="rv" data-i18n="r.h2">Who are <span class="gold">the Freaks?</span></h2>
-    <p class="lead rv" data-i18n="r.p">Tap a card to flip it and get to know the person behind the jersey.</p>
+    <p class="lead rv" data-i18n="r.p">Tap a card, or its Info button, to get to know the person behind the jersey.</p>
     <div class="filters rv" role="group" aria-label="Filter">
-      <button data-f="all" class="on" data-i18n="f.all">Everyone</button>
-      <button data-f="new" data-i18n="f.new">Newcomers</button>
-      <button data-f="IT" data-i18n="f.it">🇮🇹 Italy</button>
-      <button data-f="NL" data-i18n="f.nl">🇳🇱 Netherlands</button>
+      <button data-f="all" class="on" aria-pressed="true" data-i18n="f.all">Everyone</button>
+      <button data-f="new" aria-pressed="false" data-i18n="f.new">Newcomers</button>
+      <button data-f="IT" aria-pressed="false" data-i18n="f.it">🇮🇹 Italy</button>
+      <button data-f="NL" aria-pressed="false" data-i18n="f.nl">🇳🇱 Netherlands</button>
     </div>
     <div class="grid" id="grid"></div>
   </div>
@@ -229,9 +238,13 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
   </div>
 </section>
 
+</main>
+
 <footer>
   <img src="assets/logo-gold.png" alt="" loading="lazy" width="776" height="1014">
   <span data-i18n="foot">Freaks 3x3 · Born in Italy. Building Worldwide. Open to every player.</span>
+  <p class="biz">Freaks 3x3 NL · <mark class="todo">legal name &amp; form</mark> · <mark class="todo">street address</mark>, Nijmegen, the Netherlands · KvK <mark class="todo">number</mark> · <a href="mailto:freaks3x3@gmail.com">freaks3x3@gmail.com</a></p>
+  <nav class="legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="cookies.html">Cookie Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="refunds.html">Refund Policy</a></nav>
 </footer>
 
 <script>
@@ -275,7 +288,7 @@ const T={
  'c.3':['landen vandaag, open voor de wereld','paesi oggi, aperti al mondo'],
  's.eye':['Nieuwkomer in de spotlight','Nuovo arrivo in primo piano'],
  'r.eye':['De selectie','Il roster'],'r.h2':['Wie zijn <span class="gold">de Freaks?</span>','Chi sono <span class="gold">i Freaks?</span>'],
- 'r.p':['Tik op een kaart om hem om te draaien en leer de persoon achter het shirt kennen.','Tocca una card per girarla e conoscere la persona dietro la maglia.'],
+ 'r.p':['Tik op een kaart of op Info en leer de persoon achter het shirt kennen.','Tocca una card o il pulsante Info per conoscere la persona dietro la maglia.'],
  'f.all':['Iedereen','Tutti'],'f.new':['Nieuwkomers','Nuovi arrivi'],'f.it':['🇮🇹 Italië','🇮🇹 Italia'],'f.nl':['🇳🇱 Nederland','🇳🇱 Paesi Bassi'],
  'j.eye':['Word lid van de familie','Unisciti alla famiglia'],
  'j.h2':['Jouw gezicht <span class="gold">op deze pagina</span>','La tua faccia <span class="gold">su questa pagina</span>'],
@@ -286,14 +299,14 @@ const T={
  'j.wa':['💬 Stuur ons een WhatsApp','💬 Scrivici su WhatsApp'],
  'foot':['Freaks 3x3 · Geboren in Italië. Groeien wereldwijd. Open voor elke speler.','Freaks 3x3 · Nati in Italia. Cresciamo nel mondo. Aperti a ogni giocatore.'],
  // JS-only
- 'new':['NIEUW','NUOVO'],'flip':['Tik ↻','Tocca ↻'],'base.IT':['🇮🇹 Italië','🇮🇹 Italia'],'base.NL':['🇳🇱 Nederland','🇳🇱 Paesi Bassi'],
+ 'new':['NIEUW','NUOVO'],'flip':['Info ↻','Info ↻'],'back':['↺ Terug','↺ Indietro'],'base.IT':['🇮🇹 Italië','🇮🇹 Italia'],'base.NL':['🇳🇱 Nederland','🇳🇱 Paesi Bassi'],
  'l.base':['Speelt in','Gioca in'],'l.from':['Uit','Da'],'l.pos':['Positie','Ruolo'],'l.since':['Sinds','Dal'],
  'you.h':['Jij?','Tu?'],'you.p':['Er is plek voor spelers uit elk land.','C’è posto per giocatori di ogni paese.'],'you.b':['Word lid →','Unisciti →'],
  'empty.new':['Onze volgende nieuwkomers worden binnenkort voorgesteld. Wil jij er een zijn?','I prossimi nuovi arrivi saranno presentati a breve. Vuoi essere uno di loro?'],
  'empty':['Nog niemand hier. Binnenkort meer.','Ancora nessuno qui. Presto altri.'],
  'wa':['Hoi! Ik wil graag met Freaks 3x3 spelen.','Ciao! Vorrei giocare con Freaks 3x3.'],
 };
-const EN={'new':'NEW','flip':'Tap ↻','base.IT':'🇮🇹 Italy','base.NL':'🇳🇱 Netherlands','l.base':'Plays in','l.from':'From','l.pos':'Position','l.since':'Since',
+const EN={'new':'NEW','flip':'Info ↻','back':'↺ Back','base.IT':'🇮🇹 Italy','base.NL':'🇳🇱 Netherlands','l.base':'Plays in','l.from':'From','l.pos':'Position','l.since':'Since',
  'you.h':'You?','you.p':'There’s a place for players from every country.','you.b':'Join us →',
  'empty.new':'Our next newcomers are being introduced soon. Want to be one of them?','empty':'Nobody here yet. More soon.',
  'wa':"Hi! I'd like to play with Freaks 3x3."};
@@ -307,15 +320,16 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 let filter='all';
 function card(m,i){
   const rows=[[t('l.base'),t('base.'+m.base)],m.from&&[t('l.from'),esc(m.from)],m.position&&[t('l.pos'),esc(tx(m.position))],m.since&&[t('l.since'),esc(m.since)]].filter(Boolean);
-  return `<div class="m rv" tabindex="0" role="button" aria-label="${esc(m.name)}">
+  return `<div class="m rv">
   <div class="in">
-    <div class="side front">${m.newcomer?`<span class="tag new">${t('new')}</span>`:`<span class="tag">${t('base.'+m.base)}</span>`}<span class="hint">${t('flip')}</span>
+    <div class="side front">${m.newcomer?`<span class="tag new">${t('new')}</span>`:`<span class="tag">${t('base.'+m.base)}</span>`}<button type="button" class="flipb" aria-label="Info: ${esc(m.name)}">${t('flip')}</button>
       <img src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy">
       <div class="txt"><h3>${esc(m.name)}</h3><div class="r">${esc(tx(m.role))}</div></div></div>
     <div class="side back"><h3>${esc(m.name)}</h3><div class="r">${esc(tx(m.role))}</div>
       <dl>${rows.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')}</dl>
       ${m.quote?`<p><em>“${esc(tx(m.quote))}”</em></p>`:''}<p>${esc(tx(m.bio))}</p>
-      ${m.ig?`<a href="https://instagram.com/${esc(m.ig)}" target="_blank" rel="noopener">@${esc(m.ig)}</a>`:''}</div>
+      ${m.ig?`<a href="https://instagram.com/${esc(m.ig)}" target="_blank" rel="noopener">@${esc(m.ig)}</a>`:''}
+      <button type="button" class="flipb">${t('back')}</button></div>
   </div></div>`;
 }
 function youCard(){return `<a class="m you rv" href="#join"><div class="in"><div class="side front">
@@ -323,7 +337,10 @@ function youCard(){return `<a class="m you rv" href="#join"><div class="in"><div
 function render(){
   const list=FAMILY.filter(m=>filter==='all'||(filter==='new'?m.newcomer:m.base===filter));
   $('#grid').innerHTML=(list.length?list.map(card).join(''):`<div class="empty">${t(filter==='new'?'empty.new':'empty')}</div>`)+youCard();
-  $$('#grid .m:not(.you)').forEach(el=>{const flip=()=>el.classList.toggle('f');el.onclick=flip;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}}});
+  // Flip: the whole card for mouse/touch, the Info/Back buttons for keyboard. The hidden side is inert.
+  $$('#grid .m:not(.you)').forEach(el=>{const fr=el.querySelector('.front'),bk=el.querySelector('.back');bk.inert=true;
+    const set=(on,focus)=>{el.classList.toggle('f',on);fr.inert=on;bk.inert=!on;if(focus)(on?bk:fr).querySelector('.flipb').focus()};
+    el.onclick=e=>{if(e.target.closest('a'))return;const btn=e.target.closest('.flipb');set(!el.classList.contains('f'),!!btn&&e.detail===0)}});
   $$('#grid .rv').forEach((el,i)=>{el.style.transitionDelay=Math.min(i*60,360)+'ms';io.observe(el)});
   // spotlight
   const s=FAMILY.find(m=>m.spotlight);$('#spotlight').hidden=!s;
@@ -333,12 +350,12 @@ function render(){
   $('#cMembers').textContent=FAMILY.length;const nNew=FAMILY.filter(m=>m.newcomer).length;$('#cNew').textContent=nNew;$('#cNewCard').hidden=!nNew;
   $('#waJoin').href='https://wa.me/31614395997?text='+encodeURIComponent(t('wa'));
 }
-$$('.filters button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;$$('.filters button').forEach(x=>x.classList.toggle('on',x===b));render()});
+$$('.filters button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;$$('.filters button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});render()});
 
 /* ---------- language (shared with the home page) ---------- */
 function setLang(l){
   lang=l;document.documentElement.lang=l;
-  $$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  $$('.lang button').forEach(b=>{b.classList.toggle('on',b.dataset.lang===l);b.setAttribute('aria-pressed',b.dataset.lang===l)});
   $$('[data-i18n]').forEach(e=>{e.innerHTML=l==='en'?orig.get(e):(T[e.dataset.i18n]?.[LI[l]]??orig.get(e))});
   render();try{localStorage.setItem('f3lang',l)}catch(_){}
 }

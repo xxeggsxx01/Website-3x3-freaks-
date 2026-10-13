@@ -12,9 +12,7 @@
 <meta property="og:image" content="assets/og.jpg">
 <link rel="icon" type="image/png" href="assets/icon-64.png">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
 :root{
   --navy-900:#050b1c; --navy-800:#08122b; --navy-700:#0d1c42; --navy-600:#14295e;
@@ -246,10 +244,23 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;bord
 footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
 #thanks{display:none;color:var(--gold);font-weight:800;text-align:center}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-80px;z-index:100;background:var(--gold);color:#1a1200;padding:12px 18px;border-radius:10px;font-weight:800}
+.skip:focus{top:12px}
+.game canvas:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+label.check{display:flex;gap:12px;align-items:flex-start;font-weight:400;font-size:.88rem;color:var(--muted)}
+label.check input{width:22px;height:22px;min-height:0;padding:0;margin-top:2px;accent-color:var(--gold);flex:none}
+label.check a,.formnote a{color:var(--gold-2);text-decoration:underline}
+.formnote{color:var(--muted);font-size:.82rem}
+footer .biz{margin-top:10px}
+footer nav.legal{position:static;z-index:auto;padding:0;background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;transition:none}
+footer .legal{display:flex;gap:6px 20px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+footer .legal a,footer .biz a{color:var(--ink);text-decoration:underline;display:inline-flex;align-items:center;min-height:44px}
+mark.todo{background:#ff5a3c;color:#000;padding:0 5px;border-radius:4px;font-weight:700}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="glow"></div>
 
 <nav id="nav">
@@ -268,16 +279,17 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
     </ul>
     <div class="right">
       <div class="lang" role="group" aria-label="Language">
-        <button data-lang="en" class="on">EN</button><button data-lang="nl">NL</button><button data-lang="it">IT</button>
+        <button data-lang="en" class="on" aria-pressed="true" aria-label="EN, English">EN</button><button data-lang="nl" aria-pressed="false" aria-label="NL, Nederlands">NL</button><button data-lang="it" aria-pressed="false" aria-label="IT, Italiano">IT</button>
       </div>
       <a href="#contact" class="btn primary" data-i18n="nav.cta">Become a partner</a>
-      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">☰</button>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">☰</button>
     </div>
   </div>
 </nav>
 
-<a href="#contact" id="mcta" class="btn primary" data-i18n="mcta">Become a partner →</a>
 
+<main id="main">
+<a href="#contact" id="mcta" class="btn primary" data-i18n="mcta">Become a partner →</a>
 <header id="hero">
   <canvas id="court" aria-hidden="true"></canvas>
   <img class="mark" src="assets/logo-gold.png" alt="" aria-hidden="true">
@@ -291,15 +303,15 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
         <a href="#tiers" class="btn primary" data-i18n="hero.cta">See sponsorship tiers →</a>
         <a href="#kit" class="btn ghost" data-i18n="hero.kit">See the kit</a>
       </div>
-      <div class="hint"><i></i><span data-i18n="hero.hint">Drag the ball back and release to shoot. Try the 12-second shot clock challenge.</span></div>
+      <div class="hint"><i></i><span data-i18n="hero.hint">Drag the ball back and release to shoot (or use the arrow keys and Space). Try the 12-second shot clock challenge.</span></div>
     </div>
     <div class="game" id="game">
       <div class="hud">
         <div class="score"><b id="score">0</b><span data-i18n="g.score">SCORE</span> · <b id="best">0</b><span data-i18n="g.best">BEST</span></div>
         <div class="clock" id="clock">12.0</div>
       </div>
-      <div class="toast" id="toast"></div>
-      <canvas id="gc" aria-label="Basketball shooting mini-game"></canvas>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <canvas id="gc" tabindex="0" role="application" aria-label="Basketball mini-game. Drag the ball to shoot, or use the left and right arrow keys to aim, up and down to set power, and Space to shoot."></canvas>
       <button class="btn primary chall" id="chall">⏱ 12s CHALLENGE</button>
     </div>
   </div>
@@ -418,7 +430,7 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
       </div>
       <p class="kitnote rv" data-i18n="kit.note">Example placement on our current kit. Community Partners appear on training and community kit. Tap a gold marker to see that tier.</p>
     </div>
-    <div class="stage rv" id="stage" role="button" tabindex="0" aria-label="Flip kit">
+    <div class="stage rv" id="stage">
       <div class="flip" id="flip">
         <div class="face front"><img id="kitF" src="assets/kit-white-front.webp" alt="Freaks 3x3 summer kit, front" width="520" height="837"></div>
         <div class="face back"><img id="kitB" src="assets/kit-white-back.webp" alt="Freaks 3x3 summer kit, back with sponsor logos" width="517" height="833">
@@ -436,8 +448,8 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
     <h2 class="rv" data-i18n="ti.h2">Pick your <span class="gold">level</span></h2>
     <p class="lead rv" data-i18n="ti.p">Two ways to pay on every tier: per 6 months, or the full year upfront with 20% off.</p>
     <div class="toggle rv" role="group">
-      <button id="t6" class="on" data-i18n="ti.t6">Per 6 months</button>
-      <button id="t12" data-i18n="ti.t12">Full year · −20%</button>
+      <button id="t6" class="on" aria-pressed="true" data-i18n="ti.t6">Per 6 months</button>
+      <button id="t12" aria-pressed="false" data-i18n="ti.t12">Full year · −20%</button>
     </div>
     <p class="vat rv" data-i18n="ti.vat">Prices excl. VAT, where applicable.</p>
     <div class="tiers">
@@ -492,7 +504,7 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
     <p class="lead rv" data-i18n="in.p">Real equipment, real setup, real travel. Estimated cost of running our first Dutch tournament:</p>
     <div class="budget rv" id="budget"></div>
     <div class="total rv"><span data-i18n="in.total">TOTAL ESTIMATE</span><span class="gold" id="btotal">€2,200–3,600</span></div>
-    <div class="card whynow rv"><h3 data-i18n="in.wh">Why now</h3><p data-i18n="in.wp">Two markets, one partnership. Real equipment you can see. An Italy experience with value of its own. And founding partner status: the brands that join now are the ones that built this. Founding rates won't come back.</p></div>
+    <div class="card whynow rv"><h3 data-i18n="in.wh">Why now</h3><p data-i18n="in.wp">Two markets, one partnership. Real equipment you can see. An Italy experience with value of its own. And founding partner status: the brands that join now are the ones that built this.</p></div>
   </div>
 </section>
 
@@ -511,7 +523,9 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
         </select>
       </label>
       <label><span data-i18n="f.msg">Message (optional)</span><textarea name="msg" rows="3"></textarea></label>
-      <button class="btn primary" type="submit" style="justify-content:center" data-i18n="f.send">Send inquiry →</button>
+      <label class="check"><input type="checkbox" name="consent" required><span data-i18n="f.consent">I agree that Freaks 3x3 uses these details only to reply to my inquiry, as described in the <a href="privacy.html">Privacy Policy</a>.</span></label>
+      <button class="btn primary" type="submit" style="justify-content:center" data-i18n="f.send">Send inquiry via email →</button>
+      <p class="formnote" data-i18n="f.note">Sending opens your own email app. This website does not store anything you type.</p>
       <p id="thanks" data-i18n="f.thanks">Your email app should now open with the inquiry to freaks3x3@gmail.com. Prefer WhatsApp? Use the button below.</p>
     </form>
     <div class="contacts rv">
@@ -523,9 +537,13 @@ footer img{height:44px;width:auto;margin:0 auto 12px;opacity:.8}
   </div>
 </section>
 
+</main>
+
 <footer>
   <img src="assets/logo-gold.png" alt="" loading="lazy" width="776" height="1014">
   <span data-i18n="foot">Freaks 3x3 NL · Nijmegen, 2026 · Born in Italy. Building Worldwide. Your brand on both.</span>
+  <p class="biz">Freaks 3x3 NL · <mark class="todo">legal name &amp; form</mark> · <mark class="todo">street address</mark>, Nijmegen, the Netherlands · KvK <mark class="todo">number</mark> · <a href="mailto:freaks3x3@gmail.com">freaks3x3@gmail.com</a></p>
+  <nav class="legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="cookies.html">Cookie Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="refunds.html">Refund Policy</a></nav>
 </footer>
 
 <script>
@@ -543,7 +561,7 @@ const T={
  'hero.h1':[H1('Geboren in','Italië.','Groeien','wereldwijd.','Jouw merk in beide.'),H1('Nati in','Italia.','Cresciamo nel','mondo.','Il tuo brand in entrambi.')],
  'hero.p':['Een streetball-community met echte Italiaanse roots, nu winnend in Nijmegen en open voor spelers uit elk land. Eén partnerschap. Vandaag twee markten. Een verhaal dat net begint.','Una community streetball con vere radici italiane, ora vincente a Nijmegen e aperta a giocatori di ogni paese. Una partnership. Oggi due mercati. Una storia appena iniziata.'],
  'hero.cta':['Bekijk de pakketten →','Scopri i pacchetti →'],'hero.kit':['Bekijk het tenue','Vedi la divisa'],
- 'hero.hint':['Trek de bal naar achteren en laat los om te schieten. Probeer de 12-seconden shot clock challenge.','Trascina la palla indietro e rilascia per tirare. Prova la sfida dei 12 secondi.'],
+ 'hero.hint':['Trek de bal naar achteren en laat los om te schieten (of gebruik de pijltjestoetsen en spatie). Probeer de 12-seconden shot clock challenge.','Trascina la palla indietro e rilascia per tirare (o usa le frecce e la barra spaziatrice). Prova la sfida dei 12 secondi.'],
  'g.score':['PUNTEN','PUNTI'],'g.best':['RECORD','RECORD'],
  'about.eye':['Wie we zijn','Chi siamo'],
  'about.h2':['Het Olympische format<br>van <span class="gold">streetball</span>','Il formato olimpico<br>dello <span class="gold">streetball</span>'],
@@ -620,13 +638,15 @@ const T={
  'in.p':['Echte uitrusting, echte opbouw, echte reizen. Geschatte kosten van ons eerste Nederlandse toernooi:','Attrezzatura vera, allestimento vero, trasferte vere. Costo stimato del nostro primo torneo olandese:'],
  'in.total':['TOTAAL GESCHAT','TOTALE STIMATO'],
  'in.wh':['Waarom nu','Perché ora'],
- 'in.wp':['Twee markten, één partnerschap. Echte uitrusting die je kunt zien. Een Italië-ervaring met eigen waarde. En de status van founding partner: de merken die nu instappen, zijn de merken die dit hebben gebouwd. Founding-tarieven komen niet terug.','Due mercati, una partnership. Attrezzatura vera, che puoi vedere. Un’esperienza in Italia che vale da sola. E lo status di founding partner: i brand che entrano ora sono quelli che hanno costruito tutto questo. Le tariffe founding non torneranno.'],
+ 'in.wp':['Twee markten, één partnerschap. Echte uitrusting die je kunt zien. Een Italië-ervaring met eigen waarde. En de status van founding partner: de merken die nu instappen, zijn de merken die dit hebben gebouwd.','Due mercati, una partnership. Attrezzatura vera, che puoi vedere. Un’esperienza in Italia che vale da sola. E lo status di founding partner: i brand che entrano ora sono quelli che hanno costruito tutto questo.'],
  'ct.eye':['Laten we dit samen bouwen','Costruiamolo insieme'],
  'ct.h2':['Erbij vanaf <span class="gold">dag één</span>','Con noi dal <span class="gold">primo giorno</span>'],
  'ct.p':['Vertel ons over je merk en welk pakket past. Geen verplichtingen, gewoon een gesprek.','Raccontaci del tuo brand e quale pacchetto fa per te. Nessun impegno, solo una conversazione.'],
  'f.name':['Je naam','Il tuo nome'],'f.company':['Bedrijf / merk','Azienda / brand'],'f.email':['E-mail','Email'],
  'f.tier':['Pakket','Pacchetto'],'f.unsure':['Weet ik nog niet','Non so ancora'],'f.msg':['Bericht (optioneel)','Messaggio (facoltativo)'],
- 'f.send':['Verstuur aanvraag →','Invia richiesta →'],
+ 'f.consent':['Ik ga ermee akkoord dat Freaks 3x3 deze gegevens alleen gebruikt om op mijn aanvraag te reageren, zoals beschreven in het <a href="privacy.html">privacybeleid</a>.','Accetto che Freaks 3x3 usi questi dati solo per rispondere alla mia richiesta, come descritto nella <a href="privacy.html">Privacy Policy</a>.'],
+ 'f.note':['Verzenden opent je eigen mailprogramma. Deze website slaat niets op van wat je invult.','L’invio apre la tua app email. Questo sito non salva nulla di ciò che scrivi.'],
+ 'f.send':['Verstuur aanvraag via e-mail →','Invia richiesta via email →'],
  'f.thanks':['Je mailprogramma opent nu met de aanvraag aan freaks3x3@gmail.com. Liever WhatsApp? Gebruik de knop hieronder.','La tua app email si aprirà con la richiesta a freaks3x3@gmail.com. Preferisci WhatsApp? Usa il pulsante qui sotto.'],
  'foot':['Freaks 3x3 NL · Nijmegen, 2026 · Geboren in Italië. Groeien wereldwijd. Jouw merk in beide.','Freaks 3x3 NL · Nijmegen, 2026 · Nati in Italia. Cresciamo nel mondo. Il tuo brand in entrambi.'],
  // strings used only from JS
@@ -652,7 +672,7 @@ const fmt=n=>'€'+n.toLocaleString(loc());
 const rng=(a,b)=>fmt(a)+'–'+b.toLocaleString(loc());
 function setLang(l){
   lang=l;document.documentElement.lang=l;
-  $$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  $$('.lang button').forEach(b=>{b.classList.toggle('on',b.dataset.lang===l);b.setAttribute('aria-pressed',b.dataset.lang===l)});
   $$('[data-i18n]').forEach(e=>{e.innerHTML=l==='en'?orig.get(e):(T[e.dataset.i18n]?.[LI[l]]??orig.get(e))});
   $$('[data-i18n-al]').forEach(e=>e.setAttribute('aria-label',l==='en'?orig.get(e):(T[e.dataset.i18nAl]?.[LI[l]]??orig.get(e))));
   renderBudget();setBilling(yearly);syncKit();
@@ -696,7 +716,7 @@ if(!reduce){addEventListener('scroll',para,{passive:true});para()}
 /* ---------- pricing ---------- */
 let yearly=false;
 function setBilling(y){
-  yearly=y;$('#t6').classList.toggle('on',!y);$('#t12').classList.toggle('on',y);
+  yearly=y;$('#t6').classList.toggle('on',!y);$('#t12').classList.toggle('on',y);$('#t6').setAttribute('aria-pressed',!y);$('#t12').setAttribute('aria-pressed',y);
   $$('.tier').forEach(tr=>{const a=+tr.dataset.a,b=+tr.dataset.b,p=tr.querySelector('[data-role=p]'),from=+p.dataset.v||a,to=y?b:a;
     p.dataset.v=to;let t0=null;(function f(ts){t0??=ts;const k=reduce?1:Math.min((ts-t0)/450,1);p.textContent=fmt(Math.round(from+(to-from)*k));if(k<1)requestAnimationFrame(f)})(performance.now());
     tr.querySelector('[data-role=per]').textContent=t(y?'ti.per12':'ti.per6');
@@ -715,12 +735,11 @@ let kitColor='white',kitBack=false;
 function syncKit(){
   $('#kitF').src=`assets/kit-${kitColor}-front.webp`;$('#kitB').src=`assets/kit-${kitColor}-back.webp`;
   $('#flip').classList.toggle('b',kitBack);$('#flipBtn').textContent=t(kitBack?'kit.front':'kit.back');
-  $$('.sw').forEach(s=>s.classList.toggle('on',s.dataset.c===kitColor));
+  $$('.sw').forEach(s=>{s.classList.toggle('on',s.dataset.c===kitColor);s.setAttribute('aria-pressed',s.dataset.c===kitColor)});
 }
 const flip=()=>{kitBack=!kitBack;syncKit()};
 $('#flipBtn').onclick=flip;
 $('#stage').addEventListener('click',e=>{if(!e.target.closest('.hs'))flip()});
-$('#stage').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
 $$('.sw').forEach(s=>s.onclick=()=>{kitColor=s.dataset.c;syncKit()});
 $$('.hs').forEach(h=>h.onclick=e=>{e.stopPropagation();const name=h.dataset.go,card=$(`.tier[data-name="${name}"]`);
   $('#tierSel').value=name;card.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
@@ -750,7 +769,6 @@ bg();
 const gc=$('#gc'),g=gc.getContext('2d'),box=$('#game');let GW=0,GH=0;
 const R=17,G=.42,PULL=130;let MAXP=22;
 const game={score:0,best:0,ch:false,end:0,chBest:0};
-try{game.best=+(localStorage.getItem('f3best')||0);game.chBest=+(localStorage.getItem('f3ch')||0)}catch(_){}
 let ball,hoop,drag=null,scored=false,waiting=false,net=0,sparks=[];
 function showBest(){$('#best').textContent=game.ch?game.chBest:game.best}
 function placeHoop(rand){hoop=rand?{x:GW*.55+Math.random()*(GW*.45-70),y:GH*(.22+Math.random()*.3),w:62}:{x:GW-90,y:GH*.38,w:62}}
@@ -767,18 +785,26 @@ gc.addEventListener('pointerdown',e=>{const p=pos(e);if(onBall(p)){drag=p;gc.set
 gc.addEventListener('pointermove',e=>{if(drag)drag=pos(e)});
 gc.addEventListener('pointercancel',()=>{drag=null});
 gc.addEventListener('pointerup',()=>{if(!drag)return;const[vx,vy,m]=vel();drag=null;if(m<.08)return;ball.vx=vx;ball.vy=vy;ball.fly=true;ball.t=0;scored=false});
+// Keyboard play: arrows aim / set power, Space or Enter shoots.
+const kb={a:-72,m:.82,on:false};
+gc.addEventListener('focus',()=>kb.on=true);gc.addEventListener('blur',()=>kb.on=false);
+gc.addEventListener('keydown',e=>{const k=e.key;
+  if(k==='ArrowLeft')kb.a=Math.max(-88,kb.a-2);else if(k==='ArrowRight')kb.a=Math.min(-20,kb.a+2);
+  else if(k==='ArrowUp')kb.m=Math.min(1,kb.m+.02);else if(k==='ArrowDown')kb.m=Math.max(.2,kb.m-.02);
+  else if(k===' '||k==='Enter'){if(!ball.fly&&!waiting){const a=kb.a*Math.PI/180;ball.vx=Math.cos(a)*kb.m*MAXP;ball.vy=Math.sin(a)*kb.m*MAXP;ball.fly=true;ball.t=0;scored=false}}
+  else return;e.preventDefault()});
 function finish(delay){if(waiting)return;waiting=true;ball.fly=false;setTimeout(rest,delay)}
 function make(){
   scored=true;game.score++;$('#score').textContent=game.score;net=1;
   for(let i=0;i<18;i++)sparks.push({x:hoop.x,y:hoop.y,vx:(Math.random()-.5)*6,vy:-Math.random()*5,l:1});
   toast(game.score%5===0?t('g.fire'):t('g.bucket'));
-  if(!game.ch&&game.score>game.best){game.best=game.score;showBest();try{localStorage.setItem('f3best',game.best)}catch(_){}}
+  if(!game.ch&&game.score>game.best){game.best=game.score;showBest()}
   if(game.ch)setTimeout(()=>{placeHoop(true);finish(0)},350);
 }
 function startChallenge(){game.ch=true;game.score=0;$('#score').textContent=0;game.end=performance.now()+12000;placeHoop(true);rest();
   $('#clock').classList.add('on');$('#chall').textContent=t('g.stop');showBest()}
 function endChallenge(show){game.ch=false;$('#clock').classList.remove('on');$('#chall').textContent=t('g.start');
-  if(show){toast(t('g.result').replace('{n}',game.score));if(game.score>game.chBest){game.chBest=game.score;try{localStorage.setItem('f3ch',game.chBest)}catch(_){}}}
+  if(show){toast(t('g.result').replace('{n}',game.score));if(game.score>game.chBest){game.chBest=game.score}}
   game.score=0;setTimeout(()=>{$('#score').textContent=0;placeHoop(false);rest();showBest()},1400)}
 $('#chall').onclick=()=>game.ch?endChallenge(false):startChallenge();
 function step(){
@@ -806,9 +832,10 @@ function draw(){
   for(let i=0;i<=6;i++){const x=hoop.x-hoop.w/2+i*hoop.w/6,sw=Math.sin(i+performance.now()/90)*net*6;g.beginPath();g.moveTo(x,hoop.y);g.lineTo(hoop.x-hoop.w/3+i*hoop.w/9+sw,hoop.y+34+net*8);g.stroke()}
   g.strokeStyle='#ff9d3c';g.lineWidth=4;g.beginPath();g.moveTo(hoop.x-hoop.w/2,hoop.y);g.lineTo(hoop.x+hoop.w/2,hoop.y);g.stroke();
   sparks.forEach(s=>{g.fillStyle=`rgba(255,223,126,${s.l})`;g.beginPath();g.arc(s.x,s.y,2.5,0,7);g.fill()});
-  if(drag){let[vx,vy]=vel(),x=ball.x,y=ball.y;g.fillStyle='rgba(245,197,66,.75)';
-    for(let i=0;i<30;i++){vy+=G;x+=vx;y+=vy;if(i%2==0){g.beginPath();g.arc(x,y,2.4,0,7);g.fill()}}
+  const dots=(vx,vy)=>{let x=ball.x,y=ball.y;g.fillStyle='rgba(245,197,66,.75)';for(let i=0;i<30;i++){vy+=G;x+=vx;y+=vy;if(i%2==0){g.beginPath();g.arc(x,y,2.4,0,7);g.fill()}}};
+  if(drag){const[vx,vy]=vel();dots(vx,vy);
     g.strokeStyle='rgba(245,197,66,.3)';g.lineWidth=2;g.beginPath();g.moveTo(ball.x,ball.y);g.lineTo(drag.x,drag.y);g.stroke()}
+  else if(kb.on&&!ball.fly&&!waiting){const a=kb.a*Math.PI/180;dots(Math.cos(a)*kb.m*MAXP,Math.sin(a)*kb.m*MAXP)}
   if(!ball.fly&&!drag&&!waiting){g.strokeStyle=`rgba(245,197,66,${.3+.3*Math.sin(performance.now()/300)})`;g.lineWidth=2;g.beginPath();g.arc(ball.x,ball.y,R+8,0,7);g.stroke()}
   g.fillStyle='rgba(0,0,0,.3)';g.beginPath();g.ellipse(ball.x,GH-4,R*(1-(GH-ball.y)/GH*.6),4,0,0,7);g.fill();
   g.save();g.translate(ball.x,ball.y);g.rotate(ball.x*.03);
